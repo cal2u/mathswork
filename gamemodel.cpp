@@ -557,7 +557,7 @@ return true;
 }
 
 /* Fill empty spaces with random numbers at the given ratio */
-void MathGameModel::fill_board(double ratio)
+void MathGameModel::fill_board(int num_to_fill)
 {
     // ratio determines how many blocks are filled
     int num_to_fill = ratio * board_model->num_empty_blocks();

@@ -22,7 +22,7 @@ private:
 	std::vector<int> arrayofnumbers;//contains all the operators
 	std::vector<char> arrayofchars;//contains all the numbers
 public:
-        MathGameModel();
+    MathGameModel();
 
 	/*Used to return the private board object*/
 	GameBoardModel get_board();
@@ -50,7 +50,7 @@ public:
         std::string get_formula();
 
 	/* Fill the board with new numbers at the beginning of the game */
-	void fill_board(double);
+	void fill_board(int num_to_fill);
 
 	/* Removes the last num or operator from the formula */
 	void dequeue();
