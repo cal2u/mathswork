@@ -18,7 +18,7 @@ private:
 	std::vector<std::string>     formula;
 
 public:
-        MathGameModel();
+    MathGameModel();
 
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
@@ -28,7 +28,7 @@ public:
         std::string get_formula();
 
 	/* Fill the board with new numbers at the beginning of the game */
-	void fill_board(double);
+	void fill_board(int num_to_fill);
 
 	/* Removes the last num or operator from the formula */
 	void dequeue();
