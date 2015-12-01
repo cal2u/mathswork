@@ -14,17 +14,19 @@ private:
 	 int width;
 	 int height;
 
-	int blocks[];
-	bool selected[];
+	int  *blocks;
+	bool *selected;
 
-	int		num_blocks; // Number of squares that are not empty
+	int  num_blocks; // Number of squares that are not empty
 
 public:
 	GameBoardModel(int width, int height);
 	~GameBoardModel();
 
-	int get_num_blocks(); // Maybe used for figuring
-						  // out how many blocks to drop?
+        int get_width()  { return width; };
+        int get_height() { return height; };
+
+	int num_empty_blocks(); // Maybe used for figuring out how many blocks to drop?
 
 	int 	get_block(int row, int col);
 	void 	set_block(int row, int col, int value);

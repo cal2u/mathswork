@@ -14,22 +14,28 @@ class MathGameModel {
 private:
 	GameBoardModel* 	board_model;
 	int			difficulty;
-	long		time; // Not quite sure if necessary
-	std::string 		formula;
+	long		        current_time; // Not quite sure if necessary
+	std::vector<std::string>     formula;
 
 public:
+        MathGameModel();
+
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
 	bool handle_formula(std::string formula);
 
+        // Returns a string representation of the formula
+        std::string get_formula();
+
 	/* Fill the board with new numbers at the beginning of the game */
-	void fill_board();
+	void fill_board(double);
 
 	/* Removes the last num or operator from the formula */
 	void dequeue();
 
 	/* Adds a num or operator to the formula */
 	void append(std::string);
+
 
 	/* Fills in more grid squares based on game mode and difficulty */
 	void tick();
