@@ -13,7 +13,7 @@ using namespace std;
 string leaderboard ="leaderboard.txt";
 
 //the chosen name of the leader bord file
-
+int i=0;
 // prints line by line from the txt file
 void printleader(){
     string line;
