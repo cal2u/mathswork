@@ -1,21 +1,30 @@
+/*
+ * BoardModel.cpp
+ *
+ *  Created on: Nov 19, 2015
+ *      Author: Matt
+ */
+
 #include "boardmodel.h"
+#include <assert.h>
 
-GameBoardModel::GameBoardModel(int width, int height) {
-	self.width = width;
-	self.height = height;
 
-	self.blocks = new int[width*height];
-	self.selected = new int[width*height];
+GameBoardModel::GameBoardModel( int width, int height) {
+	this->width = width;
+	this->height = height;
+
+	this->blocks[width*height];
+	this->selected[width*height];
 
 	for (int i = 0; i < width*height; i++) {
-		self.blocks[i] = -1;
-		self.selected[i] = false;
-	}	
+		this->blocks[i] = -1;
+		this->selected[i] = false;
+	}
 }
 
 GameBoardModel::~GameBoardModel() {
-	delete self.blocks;
-	delete self.selected;
+	delete(this->blocks);
+	delete(this->selected);
 }
 
 // Returns the number of blocks that arent filled
@@ -28,7 +37,7 @@ int GameBoardModel::get_block(int row, int col) {
 	return blocks[row*width+col];
 }
 
-int GameBoardModel::set_block(int row, int col, int value) {
+void GameBoardModel::set_block(int row, int col, int value) {
 	assert(row >= 0 && col >= 0 && row < height && col < width);
 	blocks[row*width+col] = value;
 }
@@ -48,3 +57,4 @@ void GameBoardModel::deselect_block(int row, int col) {
 	assert(row >= 0 && col >= 0 && row < height && col < width);
 	selected[row*width+col] = false;
 }
+ /* namespace std */
