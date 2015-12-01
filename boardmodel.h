@@ -23,6 +23,11 @@ public:
 	GameBoardModel(int width, int height);
 	~GameBoardModel();
 
+
+	int get_blocks(int index);//NEW, added it because I just wanted to find the content of every block that had a number,
+				//and didnt know how to use the get_block(row, column) form you had made.
+	int get_gridsize();//NEW, added it to get the parameters of the grid size without trying to get it from the 'blocks' array.
+
         int get_width()  { return width; };
         int get_height() { return height; };
 

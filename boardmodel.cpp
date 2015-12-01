@@ -44,6 +44,16 @@ int GameBoardModel::num_empty_blocks()
     return count;
 }
 
+int GameBoardModel::get_gridsize()
+{
+	return width*height;
+}
+
+int GameBoardModel::get_blocks(int index)
+{
+	return blocks[index];//I need to be able to check every block
+}
+
 int GameBoardModel::get_block(int row, int col)
 {
     assert(row >= 0 && col >= 0 && row < height && col < width);
