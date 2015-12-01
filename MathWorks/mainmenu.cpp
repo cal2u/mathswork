@@ -1,5 +1,5 @@
 #include "mainmenu.h"
-#include "ui_mainwindow.h"
+#include "ui_mainmenu.h"
 #include "loginout.h"
 #include "ui_loginout.h"
 #include "gamesix.h"
