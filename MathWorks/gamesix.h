@@ -30,7 +30,6 @@ private slots:
     void on_subtract_clicked();
     void on_multiply_clicked();
     void on_divide_clicked();
-    void update_board_ui();
 
     void on_pushButton_2_clicked();
 
@@ -51,6 +50,9 @@ private:
 
     void disable_operators();
     void enable_operators();
+
+    void update_board_ui();
+    void update_formula_display();
 
 
 };
