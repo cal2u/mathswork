@@ -11,9 +11,9 @@ LogInOut::~LogInOut(){
 }
 
 // Return string in text box
-std::string LogInOut::getName(){
-    // Must convert to std::string
-    return (ui->usernameIn->text()).toUtf8().constData();;
+QString LogInOut::getName(){
+    // Must convert to QString
+    return (ui->usernameIn->text());
 }
 
 // When ok is clicked close close

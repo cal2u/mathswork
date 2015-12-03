@@ -15,7 +15,7 @@ class LogInOut : public QDialog
 public:
     explicit LogInOut(QWidget *parent = 0);
     ~LogInOut();
-    std::string getName();
+    QString getName();
 
 // Button clicked
 private slots:

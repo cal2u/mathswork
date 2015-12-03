@@ -12,13 +12,13 @@ class GameOver : public QDialog
     Q_OBJECT
 
 public:
-    explicit GameOver(QWidget *parent = 0);
+    explicit GameOver(QWidget *parent = 0, QString userNam = "Player 1", int scre = 0);
     ~GameOver();
     void saveGame();
     void setScore(int scre);
-    void setUserName(std::string usrName);
+    void setUserName(QString usrName);
     int getScore();
-    std::string getUserName();
+    QString getUserName();
 
 signals:
     void on_quit_clicked();
@@ -26,7 +26,7 @@ signals:
 
 private:
     int score;
-    std::string userName;
+    QString userName;
     Ui::GameOver *ui;
 
 private slots:

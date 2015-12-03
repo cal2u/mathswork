@@ -3,16 +3,27 @@
 #include "gamesix.h"
 #include "ui_gamesix.h"
 #include <string>
+
 // Constructor and destructor
-GameOver::GameOver(QWidget *parent) : QDialog(parent), ui(new Ui::GameOver){
+GameOver::GameOver(QWidget *parent, QString userNam, int scre) : QDialog(parent), ui(new Ui::GameOver){
     ui->setupUi(this);
 
-    // Set values
-    setScore(score);
-    setUserName(userName);
+    // Set score and username
+    userName = userNam;
+    score = scre;
+    ui->score->setText(QString::number(score));
+    ui->userName->setText(userName);
+    std::cout << userName.toStdString() << '\n';
 
     // Auto save
     //saveGame(score, userName);
+
+    // Close gameSix when this is over
+    QObject::connect(this, SIGNAL(on_retry_clicked()), parent, SLOT(closeGame()));
+    QObject::connect(this, SIGNAL(on_quit_clicked()), parent, SLOT(closeGame()));
+
+    QObject::connect(this, SIGNAL(on_quit_clicked()), this, SLOT(close()));
+    QObject::connect(this, SIGNAL(on_retry_clicked()), this, SLOT(retry()));
 
 }
 
@@ -23,15 +34,13 @@ GameOver::~GameOver(){
 // Set score
 void GameOver::setScore(int scre){
     score = scre;
-    ui->score->setText((QString) score);
+    ui->score->setText(QString::number(score));
 }
 
 // Set username
-void GameOver::setUserName(std::string usrName){
+void GameOver::setUserName(QString usrName){
      userName = usrName;
-     // Must convert to QString
-     QString qUserName = QString::fromStdString(userName);
-     ui->userName->setText(qUserName);
+     ui->userName->setText(userName);
 }
 
 // Get score
@@ -40,14 +49,13 @@ int GameOver::getScore(){
 }
 
 // Get username
-std::string GameOver::getUserName(){
+QString GameOver::getUserName(){
     return userName;
 }
 
 // To retry create new game and close gameover
 void GameOver::retry(){
-    GameSix *gameSix = new GameSix();
-    gameSix->setUserName(getUserName());
+    GameSix *gameSix = new GameSix(this, userName);
     gameSix->exec();
     this->close();
 }

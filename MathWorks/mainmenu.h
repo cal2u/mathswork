@@ -17,8 +17,8 @@ class MainMenu : public QMainWindow{
 public:
     explicit MainMenu(QWidget *parent = 0);
     ~MainMenu();
-    std::string getUserName();
-    void setUserName(std::string usrName);
+    QString getUserName();
+    void setUserName(QString usrName);
     LogInOut* logIn;
 
 // To go to the different menues
@@ -30,7 +30,7 @@ private slots:
     void on_logInOut_clicked();
 
 private:
-    std::string userName;
+    QString userName;
 
 public:
     Ui::MainMenu *ui;

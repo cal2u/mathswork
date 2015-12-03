@@ -5,18 +5,17 @@
 #include <QPushButton>
 #include <iostream>
 #include <QSignalMapper>
-int scre;
-std::string userNam;
+//int scre;
+//QString userNam;
 
 // Constructor and destructor
-GameSix::GameSix(QWidget *parent) : QDialog(parent), ui(new Ui::GameSix){
+GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui::GameSix){
     ui->setupUi(this);
 
-    gameOvr = new GameOver();
-
-    // Score info
-    int score = 1;
-    std::string userName = "Player 1";
+    // Default score
+    score = 0;
+    userName = usrName;
+    std::cout << userName.toStdString() << '\n';
 
     // Timer
     /* TODO: Impliment timer that syncs with game*/
@@ -31,12 +30,6 @@ GameSix::GameSix(QWidget *parent) : QDialog(parent), ui(new Ui::GameSix){
     update_board_ui();
     enable_selectable_blocks();
 
-    // Quit and restart buttons for end game
-    QObject::connect(gameOvr, SIGNAL(on_quit_clicked()), this, SLOT(closeGame()));
-    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), this, SLOT(closeGame()));
-    // To close the gameover menu
-    QObject::connect(gameOvr, SIGNAL(on_quit_clicked()), gameOvr, SLOT(close()));
-    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), gameOvr, SLOT(retry()));
 
     // Map the grid buttons
     QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -406,16 +399,8 @@ void GameSix::setScore(int scre){
     changeScore(score);
 }
 
-void GameSix::setUserName(std::string usrName){
+void GameSix::setUserName(QString usrName){
     this->userName = usrName;
-}
-
-int GameSix::getScore(){
-    return score;
-}
-
-std::string GameSix::getUserName(){
-    return userName;
 }
 
 void GameSix::closeGame(){
@@ -433,9 +418,7 @@ void GameSix::changeScore(int scre){
 
 // End game pop up, saves then ask to play again or exit
 void GameSix::gameEnd(){
-    std::cout << getScore() << '\n';
-    gameOvr->setScore(getScore());
-    gameOvr->setUserName(getUserName());
+    gameOvr = new GameOver(this, userName, score);
     gameOvr->setModal(true);
     gameOvr->exec();
 }

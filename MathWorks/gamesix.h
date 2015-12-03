@@ -15,14 +15,12 @@ class GameSix : public QDialog {
     Q_OBJECT
 
 public:
-    explicit GameSix(QWidget *parent = 0);
+    explicit GameSix(QWidget *parent = 0, QString usrName = "Player 1");
     ~GameSix();
     void changeScore(int scre);
     void gameEnd();
-    int getScore();
-    std::string getUserName();
     void setScore(int scre);
-    void setUserName(std::string usrName);
+    void setUserName(QString usrName);
 
 private slots:
     void closeGame();
@@ -41,7 +39,7 @@ private:
     const static int height = 6;
     bool need_final_block;
     int score;
-    std::string userName;
+    QString userName;
     GameBoardModel *game_board;
     MathGameModel *game_model;
     GameOver *gameOvr;
