@@ -6,6 +6,8 @@
  */
 
 #include "boardmodel.h"
+#include "passvalues.h"
+
 #include <string>
 #include <vector>
 #include <stack>
