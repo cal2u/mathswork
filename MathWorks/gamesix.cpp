@@ -26,8 +26,6 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     disable_grid();
     game_model->fill_board(20);
     update_board_ui();
-    enable_selectable_blocks();
-
 
     // Map the grid buttons
     QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -148,6 +146,9 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
 
 GameSix::~GameSix(){
     delete ui;
+    delete game_board;
+    delete game_model;
+    delete gameOvr;
 }
 
 void GameSix::enable_selectable_blocks() {
@@ -259,6 +260,8 @@ void GameSix::on_equals_clicked(){
 void GameSix::on_add_clicked(){
     // Update model
     game_model->append("+");
+    update_formula_display();
+
 
     // Enable grid
     enable_selectable_blocks();
@@ -271,6 +274,8 @@ void GameSix::on_subtract_clicked(){
     // Update model
     game_model->append("-");
 
+    update_formula_display();
+
     // Enable grid
     enable_selectable_blocks();
 
@@ -282,6 +287,8 @@ void GameSix::on_multiply_clicked(){
     // Update model
     game_model->append("*");
 
+    update_formula_display();
+
     // Enable grid
     enable_selectable_blocks();
 
@@ -292,6 +299,9 @@ void GameSix::on_multiply_clicked(){
 void GameSix::on_divide_clicked(){
     // Update model
     game_model->append("/");
+
+    update_formula_display();
+
 
     // Enable grid
     enable_selectable_blocks();
@@ -323,10 +333,11 @@ void GameSix::grid_block_clicked(int val){
     if (!need_final_block) {
 
         // Make the number red
-        button->setStyleSheet("color: rgb(200,0,0); font-size:32px");
+        button->setStyleSheet("QPushButton {color: rgb(200,0,0); font-size:32px;}");
 
         // TODO: Update the formula view
         std::cout << "Formula: " << game_model->get_formula() << std::endl;
+        update_formula_display();
 
         // Enable operation entry
         enable_operators();
@@ -336,25 +347,35 @@ void GameSix::grid_block_clicked(int val){
     }
     // Otherwise, handle the formula
     else {
-        bool is_good = true;
-        // TODO: call game_model->handle_formula(game_model->get_formula())
-        game_model->handle_formula(game_model->get_formula());
-        game_model->clear_formula();
+        PassValues result =  game_model->handle_formula(game_model->get_formula());
 
-        // Clear the board and if it's good
-        if (is_good) {
+        // Clear the board if it's good
+        if (result.get_pass()) {
             std::cout << "Clearing the board!" << std::endl;
             game_model->clear_selected_blocks();
         }
+        else {
+            std::cout << game_model->get_formula() << std::endl;
+            std::cout << "INVALID" << std::endl;
+            // Give feedback that it didn't work
+        }
+        update_formula_display();
 
         // Either way, reset the flag for a new formula, update UI
-        update_board_ui();
+        game_model->clear_formula();
+        game_model->deselect_all();
         need_final_block = false;
+        update_board_ui();
     }
 }
 
+void GameSix::update_formula_display() {
+    ui->label->setText(QString::fromStdString(game_model->get_formula()));
+}
 
 void GameSix::update_board_ui(){
+    enable_selectable_blocks();
+
     ui->p0_0->setText((game_board->get_block(0,0) != -1) ? QString::number(game_board->get_block(0,0)) : "");
     ui->p0_1->setText((game_board->get_block(0,1) != -1) ? QString::number(game_board->get_block(0,1)) : "");
     ui->p0_2->setText((game_board->get_block(0,2) != -1) ? QString::number(game_board->get_block(0,2)) : "");
@@ -390,7 +411,52 @@ void GameSix::update_board_ui(){
     ui->p5_2->setText((game_board->get_block(5,2) != -1) ? QString::number(game_board->get_block(5,2)) : "");
     ui->p5_3->setText((game_board->get_block(5,3) != -1) ? QString::number(game_board->get_block(5,3)) : "");
     ui->p5_4->setText((game_board->get_block(5,4) != -1) ? QString::number(game_board->get_block(5,4)) : "");
-    ui->p5_5->setText((game_board->get_block(5,5) != -1) ? QString::number(game_board->get_block(5,5)) : "");}
+    ui->p5_5->setText((game_board->get_block(5,5) != -1) ? QString::number(game_board->get_block(5,5)) : "");
+    QString style = "*{"
+            "font-size:32px;"
+            "font-weight: bold;"
+            "color: black;"
+            "}"
+            ":hover{"
+            "color: green;"
+            "}";
+    if (!game_board->is_selected(0,0)) ui->p0_0->setStyleSheet(style);
+    if (!game_board->is_selected(0,1)) ui->p0_1->setStyleSheet(style);
+    if (!game_board->is_selected(0,2)) ui->p0_2->setStyleSheet(style);
+    if (!game_board->is_selected(0,3)) ui->p0_3->setStyleSheet(style);
+    if (!game_board->is_selected(0,4)) ui->p0_4->setStyleSheet(style);
+    if (!game_board->is_selected(0,5)) ui->p0_5->setStyleSheet(style);
+    if (!game_board->is_selected(1,0)) ui->p1_0->setStyleSheet(style);
+    if (!game_board->is_selected(1,1)) ui->p1_1->setStyleSheet(style);
+    if (!game_board->is_selected(1,2)) ui->p1_2->setStyleSheet(style);
+    if (!game_board->is_selected(1,3)) ui->p1_3->setStyleSheet(style);
+    if (!game_board->is_selected(1,4)) ui->p1_4->setStyleSheet(style);
+    if (!game_board->is_selected(1,5)) ui->p1_5->setStyleSheet(style);
+    if (!game_board->is_selected(2,0)) ui->p2_0->setStyleSheet(style);
+    if (!game_board->is_selected(2,1)) ui->p2_1->setStyleSheet(style);
+    if (!game_board->is_selected(2,2)) ui->p2_2->setStyleSheet(style);
+    if (!game_board->is_selected(2,3)) ui->p2_3->setStyleSheet(style);
+    if (!game_board->is_selected(2,4)) ui->p2_4->setStyleSheet(style);
+    if (!game_board->is_selected(2,5)) ui->p2_5->setStyleSheet(style);
+    if (!game_board->is_selected(3,0)) ui->p3_0->setStyleSheet(style);
+    if (!game_board->is_selected(3,1)) ui->p3_1->setStyleSheet(style);
+    if (!game_board->is_selected(3,2)) ui->p3_2->setStyleSheet(style);
+    if (!game_board->is_selected(3,3)) ui->p3_3->setStyleSheet(style);
+    if (!game_board->is_selected(3,4)) ui->p3_4->setStyleSheet(style);
+    if (!game_board->is_selected(3,5)) ui->p3_5->setStyleSheet(style);
+    if (!game_board->is_selected(4,0)) ui->p4_0->setStyleSheet(style);
+    if (!game_board->is_selected(4,1)) ui->p4_1->setStyleSheet(style);
+    if (!game_board->is_selected(4,2)) ui->p4_2->setStyleSheet(style);
+    if (!game_board->is_selected(4,3)) ui->p4_3->setStyleSheet(style);
+    if (!game_board->is_selected(4,4)) ui->p4_4->setStyleSheet(style);
+    if (!game_board->is_selected(4,5)) ui->p4_5->setStyleSheet(style);
+    if (!game_board->is_selected(5,0)) ui->p5_0->setStyleSheet(style);
+    if (!game_board->is_selected(5,1)) ui->p5_1->setStyleSheet(style);
+    if (!game_board->is_selected(5,2)) ui->p5_2->setStyleSheet(style);
+    if (!game_board->is_selected(5,3)) ui->p5_3->setStyleSheet(style);
+    if (!game_board->is_selected(5,4)) ui->p5_4->setStyleSheet(style);
+    if (!game_board->is_selected(5,5)) ui->p5_5->setStyleSheet(style);
+}
 
 void GameSix::closeGame(){
     this->close();

@@ -819,6 +819,15 @@ void MathGameModel::clear_selected_blocks() {
     }
 }
 
+void MathGameModel::deselect_all(){
+    for (int i = 0; i < board_model->get_width(); i++) {
+        for (int j = 0; j < board_model->get_height(); j++) {
+            board_model->deselect_block(i,j);
+        }
+    }
+    while (!selected_block_list.empty()) selected_block_list.pop();
+}
+
 /* Removes the last num or operator from the formula */
 void MathGameModel::dequeue()
 {

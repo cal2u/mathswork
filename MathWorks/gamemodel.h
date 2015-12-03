@@ -51,8 +51,11 @@ public:
     // Removes last block clicked from formula
     void remove_block();
 
-    // Resets blocks that are selected
+    // Resets blocks that are selected, setting their value to -1 and deselecting
     void clear_selected_blocks();
+
+    // Deselects all the blocks
+    void deselect_all();
 
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
