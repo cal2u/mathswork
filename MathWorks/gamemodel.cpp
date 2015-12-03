@@ -12,6 +12,7 @@
 // Seed the random number generator with the current time
 MathGameModel::MathGameModel(GameBoardModel *board_model)
 {
+srand(time(0));
     MathGameModel::board_model = board_model;
 }
 
@@ -283,6 +284,9 @@ void MathGameModel::remove_block()
    Return true if valid, else false */
 PassValues MathGameModel::handle_formula(std::string formula) {
 //Step 1: break down the string into a math expression
+
+	MathGameModel::arrayofnumbers.clear();
+	MathGameModel::arrayofchars.clear();
 	for (unsigned int i = 0; i < formula.length(); ++i)
 	{
 	char t = formula[i];
