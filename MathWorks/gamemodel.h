@@ -54,7 +54,7 @@ public:
 
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
-	bool handle_formula(std::string formula);
+	PassValues handle_formula(std::string formula);
 
     void clear_formula();
 

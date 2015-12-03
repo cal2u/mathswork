@@ -132,17 +132,14 @@ int MathGameModel::findLengthofOper(std::string formula, unsigned int index)
 			 {
 				 return 1+findLengthofOper(formula, index+1);
 			 }
-		}
-		else
-		{
-			if (t == 61)
-			{
-				return 1;
-			}
-			else
-			{
+			 else if (t == 61)
+			 {
+				return 1+findLengthofOper(formula, index+1);;
+			 }
+			 else
+			 {
 				return 0;
-			}
+			 }
 		}
 		return 0;
 }
@@ -205,7 +202,32 @@ int number = 0;
 				 temp -= 1;
 			 }
 	}
-return number;
+	//determine if number is used too many times
+	int used = 0;
+	for (int i = 0; i < MathGameModel::arrayofnumbers.size(); ++i)
+	{
+		if (number == MathGameModel::arrayofnumbers[i])
+		{
+		used += 1;//finds number of time 'number' has been used already
+		}
+	}
+	int repeats = 0;
+	for (int u = 0; u < MathGameModel::board_model->get_gridsize();++u)
+	{
+		if (MathGameModel::board_model->get_blocks(u) == number)
+		{
+		repeats += 1;//finds number of times number appears in grid
+		}
+	}
+
+	if (used < repeats)
+	{
+	return number;
+	}
+	else
+	{
+	return -1;//special error code; causes parent function to return false as it can never be -1
+	}
 }
 
 void MathGameModel::printVector(std::vector<char> array, std::vector<int> array2)
@@ -259,7 +281,7 @@ void MathGameModel::remove_block()
 
 /* Try to clear tiles from the board used in the given formula.
    Return true if valid, else false */
-bool MathGameModel::handle_formula(std::string formula) {
+PassValues MathGameModel::handle_formula(std::string formula) {
 //Step 1: break down the string into a math expression
 	for (unsigned int i = 0; i < formula.length(); ++i)
 	{
@@ -272,8 +294,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 	 if (numlength > 0)
 				 	 {
 					 int finalnumber = generateNumber(formula, i, numlength);
-					 MathGameModel::arrayofnumbers.push_back(finalnumber);
-					 i += numlength-1;
+					 	 if (finalnumber != -1)
+					 	 {
+					 	 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 	 i += numlength-1;
+					 	 }
+					 	 else
+					 	 {
+								PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+								return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 	 }
 				 	 }
 			 }
 			 else if(t == '1')
@@ -282,8 +312,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '2')
@@ -292,8 +330,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '3')
@@ -302,8 +348,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '4')
@@ -312,8 +366,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '5')
@@ -322,8 +384,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '6')
@@ -332,8 +402,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '7')
@@ -342,8 +420,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '8')
@@ -352,8 +438,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else if(t == '9')
@@ -362,16 +456,25 @@ bool MathGameModel::handle_formula(std::string formula) {
 			 	 if (numlength > 0)
 			 	 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 			 	 }
 			 }
 			 else//first element in formula HAS to be a number, otherwise should return false as nonvalid
 			 {
-				 return false;
+					PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+					return *values;//couldnt find the number being used in the gameboard, so invalid
 			 }
 		}
-		else if (i != formula.length()-1)
+		else
 		{
 			 if (t == '0')
 			 {
@@ -379,8 +482,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 					 if (numlength > 0)
 					 {
 					 int finalnumber = generateNumber(formula, i, numlength);
-					 MathGameModel::arrayofnumbers.push_back(finalnumber);
-					 i += numlength-1;
+						 if (finalnumber != -1)
+						 {
+						 MathGameModel::arrayofnumbers.push_back(finalnumber);
+						 i += numlength-1;
+						 }
+						 else
+						 {
+								PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+								return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+						 }
 					 }
 			 }
 			 else if(t == '1')
@@ -389,8 +500,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '2')
@@ -399,8 +518,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '3')
@@ -409,8 +536,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '4')
@@ -419,8 +554,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '5')
@@ -429,8 +572,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '6')
@@ -439,8 +590,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '7')
@@ -449,8 +608,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '8')
@@ -459,8 +626,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == '9')
@@ -469,8 +644,16 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 if (numlength > 0)
 				 {
 				 int finalnumber = generateNumber(formula, i, numlength);
-				 MathGameModel::arrayofnumbers.push_back(finalnumber);
-				 i += numlength-1;
+					 if (finalnumber != -1)
+					 {
+					 MathGameModel::arrayofnumbers.push_back(finalnumber);
+					 i += numlength-1;
+					 }
+					 else
+					 {
+							PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+							return *values;//couldnt find the number being used in the gameboard, so invalid//number used was used too many times, so invalid
+					 }
 				 }
 			 }
 			 else if(t == 42)
@@ -482,7 +665,8 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 }
 				 else
 				 {
-					 return false;
+						PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+						return *values;//couldnt find the number being used in the gameboard, so invalid
 				 }
 			 }
 			 else if(t == 47)
@@ -494,7 +678,8 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 }
 				 else
 				 {
-					 return false;
+						PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+						return *values;//couldnt find the number being used in the gameboard, so invalid
 				 }
 			 }
 			 else if(t == 43)
@@ -506,7 +691,8 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 }
 				 else
 				 {
-					 return false;
+						PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+						return *values;//couldnt find the number being used in the gameboard, so invalid
 				 }
 			 }
 			 else if(t == 45)
@@ -518,29 +704,37 @@ bool MathGameModel::handle_formula(std::string formula) {
 				 }
 				 else
 				 {
-					 return false;
+						PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+						return *values;//couldnt find the number being used in the gameboard, so invalid
 				 }
 			 }
-			 else if(t == 61)//should not be an equals sign unless its the last symbol in formula
-				 {
-				 	 return false;
-				 }
-			}
-		else
-		{
-			if(t == 61)
+			else if(t == 61)
 			{
-			 MathGameModel::arrayofchars.push_back('=');
-			}
-			else
-			{
-			return false;
+			int numlength = findLengthofOper(formula, i);
+				if (numlength == 1 && i != formula.length()-1)//makes sure there is a result/number after equals sign
+				{
+				int distfromend = findLengthofNum(formula, i+1);
+					if (i == formula.length()-distfromend-1)//checks to make sure '=' is before the LAST number
+					{
+						MathGameModel::arrayofchars.push_back('=');
+					}
+					else
+					{
+						PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+						return *values;//couldnt find the number being used in the gameboard, so invalid
+					}
+				}
+				else
+				{
+					PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+					return *values;//couldnt find the number being used in the gameboard, so invalid
+				}
 			}
 		}
 	}
 	//now time to check the result of the equation matches a number from the table, using left to right operations instead of order of operations.
 		int number;
-		for (unsigned int i = 0; i < MathGameModel::arrayofnumbers.size(); ++i)
+		for (unsigned int i = 0; i < MathGameModel::arrayofnumbers.size()-1; ++i)
 		{
 			if (i == 0)
 			{
@@ -551,7 +745,12 @@ bool MathGameModel::handle_formula(std::string formula) {
 			number = CalculateNumber(number, MathGameModel::arrayofnumbers[i],MathGameModel::arrayofchars[i-1]);
 			}
 		}
-		MathGameModel::arrayofnumbers.push_back(number);//places the calculated number in the array so that it checks that it is in the grid, along with the other input numbers
+		//last number should be result, so the formula has to equal the result input by player
+		if (number != MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1])
+		{
+			PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+			return *values;//couldnt find the number being used in the gameboard, so invalid
+		}
 		//now actually check to make sure input matches actual blocks in the grid
 		for (unsigned int i = 0; i < MathGameModel::arrayofnumbers.size(); ++i)
 		{
@@ -565,11 +764,13 @@ bool MathGameModel::handle_formula(std::string formula) {
 			}
 			if (found == false)
 			{
-				return false;//couldnt find the number being used in the gameboard, so invalid
+				PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
+				return *values; //couldnt find the number being used in the gameboard, so invalid
 			}
 		}
 		//printVector(MathGameModel::arrayofchars, MathGameModel::arrayofnumbers);
-return true;
+PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, true);
+return *values;
 }
 
 void MathGameModel::clear_formula() {
