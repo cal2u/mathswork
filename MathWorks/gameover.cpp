@@ -1,6 +1,6 @@
 #include "gameover.h"
 #include "ui_gameover.h"
-
+#include <string>
 // Constructor and destructor
 GameOver::GameOver(int score, std::string userName, QWidget *parent) : QDialog(parent), ui(new Ui::GameOver){
     ui->setupUi(this);
