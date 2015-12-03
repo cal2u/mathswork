@@ -5,8 +5,6 @@
 #include <QPushButton>
 #include <iostream>
 #include <QSignalMapper>
-//int scre;
-//QString userNam;
 
 // Constructor and destructor
 GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui::GameSix){
