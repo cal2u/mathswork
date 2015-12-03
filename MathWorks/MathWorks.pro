@@ -12,6 +12,12 @@ TARGET = MathWorks
 TEMPLATE = app
 
 
+CONFIG += c++11
+macx {
+    QMAKE_CXXFLAGS += -std=c++11 -stdlib=libc++
+    QMAKE_CFLAGS += -std=c++11 -stdlib=libc++
+}
+
 SOURCES += main.cpp \
     mainmenu.cpp \
     loginout.cpp \
@@ -19,7 +25,8 @@ SOURCES += main.cpp \
     tutorial.cpp \
     leaderboard.cpp \
     settings.cpp \
-    gameover.cpp
+    gameover.cpp \
+    boardmodel.cpp
 
 HEADERS  += \
     mainmenu.h \
@@ -28,7 +35,8 @@ HEADERS  += \
     tutorial.h \
     leaderboard.h \
     settings.h \
-    gameover.h
+    gameover.h \
+    boardmodel.h
 
 FORMS    += \
     mainmenu.ui \
