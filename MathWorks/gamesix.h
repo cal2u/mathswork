@@ -21,8 +21,8 @@ public:
     void gameEnd();
     int getScore();
     std::string getUserName();
-    void setScore(int score);
-    void setUserName(std::string userName);
+    void setScore(int scre);
+    void setUserName(std::string usrName);
 
 private slots:
     void closeGame();
@@ -41,9 +41,9 @@ private:
     const static int height = 6;
     bool need_final_block;
     int score;
+    std::string userName;
     GameBoardModel *game_board;
     MathGameModel *game_model;
-    std::string userName;
     GameOver *gameOvr;
 
     Ui::GameSix *ui;

@@ -15,9 +15,11 @@ GameSix::GameSix(QWidget *parent) : QDialog(parent), ui(new Ui::GameSix){
     gameOvr = new GameOver();
 
     // Score info
-    int score = 001;
-    std::string userNam = "Player 1";
-    ui->score->setText((QString) score);
+    int score = 1;
+    std::string userName = "Player 1";
+
+    // Timer
+    /* TODO: Impliment timer that syncs with game*/
 
     // Create game models
     game_board = new GameBoardModel(width, height);
@@ -31,10 +33,10 @@ GameSix::GameSix(QWidget *parent) : QDialog(parent), ui(new Ui::GameSix){
 
     // Quit and restart buttons for end game
     QObject::connect(gameOvr, SIGNAL(on_quit_clicked()), this, SLOT(closeGame()));
-    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), this, SLOT(startGame()));
+    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), this, SLOT(closeGame()));
     // To close the gameover menu
     QObject::connect(gameOvr, SIGNAL(on_quit_clicked()), gameOvr, SLOT(close()));
-    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), gameOvr, SLOT(close()));
+    QObject::connect(gameOvr, SIGNAL(on_retry_clicked()), gameOvr, SLOT(retry()));
 
     // Map the grid buttons
     QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -354,7 +356,6 @@ void GameSix::grid_block_clicked(int val){
             game_model->clear_selected_blocks();
         }
 
-
         // Either way, reset the flag for a new formula, update UI
         update_board_ui();
         need_final_block = false;
@@ -400,12 +401,21 @@ void GameSix::update_board_ui(){
     ui->p5_4->setText((game_board->get_block(5,4) != -1) ? QString::number(game_board->get_block(5,4)) : "");
     ui->p5_5->setText((game_board->get_block(5,5) != -1) ? QString::number(game_board->get_block(5,5)) : "");}
 
-void GameSix::setScore(int score){
-    //this->scre = score;
+void GameSix::setScore(int scre){
+    this->score = scre;
+    changeScore(score);
 }
 
-void GameSix::setUserName(std::string userName){
-    //this->userNam = userName;
+void GameSix::setUserName(std::string usrName){
+    this->userName = usrName;
+}
+
+int GameSix::getScore(){
+    return score;
+}
+
+std::string GameSix::getUserName(){
+    return userName;
 }
 
 void GameSix::closeGame(){
@@ -423,14 +433,12 @@ void GameSix::changeScore(int scre){
 
 // End game pop up, saves then ask to play again or exit
 void GameSix::gameEnd(){
-    //GameOver gameOvr;
+    std::cout << getScore() << '\n';
+    gameOvr->setScore(getScore());
+    gameOvr->setUserName(getUserName());
     gameOvr->setModal(true);
     gameOvr->exec();
 }
-
-// Operations
-
-// Change button number
 
 void GameSix::on_p0_0_clicked(){
     gameEnd();
