@@ -15,6 +15,11 @@
 MainMenu::MainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainMenu){
     ui->setupUi(this);
     statusBar()->setSizeGripEnabled(false);
+
+    logIn = new LogInOut();
+    std::string userName = "Player 1";
+    //QObject::connect(logIn, SIGNAL(on_ok_clicked()), this, SLOT(setUserName(logIn->getName())));
+
 }
 
 MainMenu::~MainMenu(){
@@ -25,6 +30,7 @@ MainMenu::~MainMenu(){
 void MainMenu::on_playGame_clicked(){
     // Go to game selection
     GameSix gameSix;
+    gameSix.setUserName(getUserName());
     this->hide();
     gameSix.exec();
     // Bring main menu back after
@@ -58,12 +64,23 @@ void MainMenu::on_settings_clicked(){
 // Show log in dialog
 void MainMenu::on_logInOut_clicked(){
     // Display log in
-    LogInOut logInOut;
-    logInOut.setModal(true);
-    logInOut.exec();
+    logIn->setModal(true);
+    logIn->exec();
     // Take name input into main menu
-    QString nam = logInOut.ui->usernameIn->text();
+    QString nam = logIn->ui->usernameIn->text();
     ui->name->setText(nam);
+    //setUserName(nam);
+}
+
+std::string MainMenu::getUserName(){
+    return userName;
+}
+
+void MainMenu::setUserName(std::string usrName){
+    userName = usrName;
+    // Must convert to QString
+    //QString qUserName = QString::fromStdString(userName);
+    //ui->name->setText(qUserName);
 }
 
 

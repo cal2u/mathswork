@@ -44,47 +44,10 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="p5_1">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>390</y>
-     <width>71</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="iconSize">
-    <size>
-     <width>16</width>
-     <height>16</height>
-    </size>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="divide">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>300</y>
-     <width>115</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>30</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>/</string>
    </property>
   </widget>
   <widget class="QPushButton" name="p2_5">
@@ -96,14 +59,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev7">
@@ -119,7 +96,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -134,14 +111,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev6">
@@ -157,7 +148,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -172,14 +163,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p1_0">
@@ -191,8 +196,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p2_2">
@@ -204,14 +223,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p3_5">
@@ -223,14 +256,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev0">
@@ -246,7 +293,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -261,15 +308,29 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QLabel" name="scoreLab">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>30</y>
+     <x>570</x>
+     <y>50</y>
      <width>59</width>
      <height>16</height>
     </rect>
@@ -292,14 +353,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>10</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p3_3">
@@ -311,14 +386,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p4_0">
@@ -330,8 +419,19 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
@@ -339,12 +439,15 @@
      <height>16</height>
     </size>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QLabel" name="score">
    <property name="geometry">
     <rect>
-     <x>640</x>
-     <y>30</y>
+     <x>630</x>
+     <y>50</y>
      <width>131</width>
      <height>16</height>
     </rect>
@@ -370,8 +473,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p5_0">
@@ -383,14 +500,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="line7">
@@ -412,7 +543,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -427,8 +558,19 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
@@ -436,23 +578,35 @@
      <height>16</height>
     </size>
    </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
   </widget>
   <widget class="QPushButton" name="equals">
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>380</y>
+     <y>400</y>
      <width>115</width>
      <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>30</pointsize>
+     <family>Helvetica Neue</family>
+     <pointsize>40</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>=</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="Line" name="linev3">
@@ -468,7 +622,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -478,18 +632,24 @@
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>220</y>
+     <y>240</y>
      <width>115</width>
      <height>71</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <pointsize>30</pointsize>
+     <family>Helvetica Neue</family>
+     <pointsize>40</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
     </font>
    </property>
    <property name="text">
-    <string>*</string>
+    <string>×</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p1_5">
@@ -501,14 +661,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p1_3">
@@ -520,8 +694,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p0_4">
@@ -533,8 +721,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p0_1">
@@ -546,8 +748,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="line6">
@@ -569,7 +785,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -594,7 +810,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -609,14 +825,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p4_4">
@@ -628,14 +858,31 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p3_2">
@@ -647,14 +894,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev1">
@@ -670,7 +931,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -695,7 +956,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -710,8 +971,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p2_1">
@@ -723,14 +998,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p4_3">
@@ -742,14 +1031,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev5">
@@ -765,7 +1068,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -780,14 +1083,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p3_0">
@@ -799,14 +1116,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p2_4">
@@ -818,14 +1149,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p3_1">
@@ -837,14 +1182,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p1_2">
@@ -856,8 +1215,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p5_4">
@@ -869,8 +1242,19 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
@@ -878,23 +1262,8 @@
      <height>16</height>
     </size>
    </property>
-  </widget>
-  <widget class="QPushButton" name="subtract">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>140</y>
-     <width>115</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>30</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>-</string>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="linev4">
@@ -910,7 +1279,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Vertical</enum>
@@ -925,14 +1294,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p0_3">
@@ -944,8 +1327,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="line5">
@@ -967,28 +1364,10 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="add">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>60</y>
-     <width>115</width>
-     <height>71</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>30</pointsize>
-    </font>
-   </property>
-   <property name="text">
-    <string>+</string>
    </property>
   </widget>
   <widget class="QPushButton" name="p0_2">
@@ -1000,8 +1379,22 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="Line" name="line3">
@@ -1023,7 +1416,7 @@
     <enum>QFrame::Plain</enum>
    </property>
    <property name="lineWidth">
-    <number>5</number>
+    <number>4</number>
    </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
@@ -1038,14 +1431,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p5_3">
@@ -1057,14 +1464,28 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
      <width>16</width>
      <height>16</height>
     </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
    </property>
   </widget>
   <widget class="QPushButton" name="p1_1">
@@ -1076,8 +1497,163 @@
      <height>51</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
    <property name="text">
-    <string/>
+    <string>1</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="p5_1">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>390</y>
+     <width>71</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">*{
+font-size:32px;
+font-weight: bold;
+color: black;
+}
+
+:hover{
+color: rgb(28, 153, 37)
+}</string>
+   </property>
+   <property name="text">
+    <string>10</string>
+   </property>
+   <property name="iconSize">
+    <size>
+     <width>16</width>
+     <height>16</height>
+    </size>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="divide">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>320</y>
+     <width>115</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Helvetica Neue</family>
+     <pointsize>40</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>÷</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="subtract">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>160</y>
+     <width>115</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Helvetica Neue</family>
+     <pointsize>40</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>-</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="add">
+   <property name="geometry">
+    <rect>
+     <x>590</x>
+     <y>80</y>
+     <width>115</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Helvetica Neue</family>
+     <pointsize>40</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="timeLeft">
+   <property name="geometry">
+    <rect>
+     <x>570</x>
+     <y>20</y>
+     <width>91</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Time Left:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="timer">
+   <property name="geometry">
+    <rect>
+     <x>670</x>
+     <y>20</y>
+     <width>71</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>20</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>0:00</string>
    </property>
   </widget>
  </widget>

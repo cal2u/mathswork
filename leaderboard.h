@@ -13,7 +13,7 @@ using namespace std;
 string leaderboard ="leaderboard.txt";
 
 //the chosen name of the leader bord file
-int i=0;
+
 // prints line by line from the txt file
 void printleader(){
     string line;
@@ -188,4 +188,37 @@ void addplayer(player p){
     else cout << "Unable to open file" << endl;
 
 }
+
+
+
+vector leaders(){
+vector<string> scores;
+    ifstream file;
+    file.open(leaderboard);
+
+    if (file.is_open())
+    {
+        string temp;
+        int score;
+        string name;
+        for(int g=0;g<10;g++) {
+
+            file >>temp;
+
+            file >> score;
+
+            file >> name;
+
+           scores.push_back(score);
+            scores.push_back(name);
+        }
+
+
+        file.close();
+        return scores;
+
+    }
+    else cout << "Unable to open file" << endl;
+
+};
 #endif //GAME_MENUE_H
