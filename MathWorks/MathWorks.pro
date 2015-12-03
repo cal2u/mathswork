@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     leaderboard.cpp \
     settings.cpp \
     gameover.cpp \
-    boardmodel.cpp
+    boardmodel.cpp \
+    gamemodel.cpp
 
 HEADERS  += \
     mainmenu.h \
@@ -36,7 +37,8 @@ HEADERS  += \
     leaderboard.h \
     settings.h \
     gameover.h \
-    boardmodel.h
+    boardmodel.h \
+    gamemodel.h
 
 FORMS    += \
     mainmenu.ui \
