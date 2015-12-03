@@ -19,7 +19,7 @@ GameBoardModel::GameBoardModel(int width, int height)
 
     for (int i = 0; i < width*height; i++)
     {
-    	this->blocks[i] = -1;
+        this->blocks[i] = -1;
     	this->selected[i] = false;
     }
 }
@@ -77,6 +77,10 @@ void GameBoardModel::select_block(int row, int col)
 {
     assert(row >= 0 && col >= 0 && row < height && col < width);
     selected[row*width+col] = true;
+}
+
+bool GameBoardModel::is_selected(int row, int col) {
+    return selected[row*width+col];
 }
 
 void GameBoardModel::deselect_block(int row, int col)
