@@ -6,6 +6,7 @@
  */
 
 #include "boardmodel.h"
+#include "passvalues.h"
 #include <string>
 #include <vector>
 #include <math.h>
@@ -44,7 +45,7 @@ public:
 
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
-	bool handle_formula(std::string formula);
+	PassValues handle_formula(std::string formula);
 
         // Returns a string representation of the formula
         std::string get_formula();
