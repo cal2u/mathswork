@@ -8,6 +8,7 @@
 #include "boardmodel.h"
 #include <string>
 #include <vector>
+#include <stack>
 #include <math.h>
 #include <iostream>
 #ifndef MATHGAMEMODEL_H_
@@ -16,16 +17,16 @@
 class MathGameModel {
 private:
 	GameBoardModel* 	board_model;
-	int			difficulty;
+    int                 difficulty;
 	long		        current_time; // Not quite sure if necessary
 	std::vector<std::string>     formula;
 	std::vector<int> arrayofnumbers;//contains all the operators
 	std::vector<char> arrayofchars;//contains all the numbers
-public:
-    MathGameModel();
 
-	/*Used to return the private board object*/
-	GameBoardModel get_board();
+    std::stack<int> selected_block_list;
+
+public:
+    MathGameModel(GameBoardModel *board_model);
 
 	/* Used to figure out how many digits a number has in the given formula*/
 	int findLengthofNum(std::string formula, unsigned int index);//unsigned to make less compiler warnings, not important
@@ -42,12 +43,23 @@ public:
 	/*Another debug function; can remove later after testing completed*/
 	void printVector(std::vector<char> array, std::vector<int> array2);
 
+    // Handles a block beging clicked
+    void add_block(int row, int col);
+
+    // Removes last block clicked from formula
+    void remove_block();
+
+    // Resets blocks that are selected
+    void clear_selected_blocks();
+
 	/* Try to clear tiles from the board used in the given formula.
 	   Return true if valid, else false */
 	bool handle_formula(std::string formula);
 
-        // Returns a string representation of the formula
-        std::string get_formula();
+    void clear_formula();
+
+    // Returns a string representation of the formula
+    std::string get_formula();
 
 	/* Fill the board with new numbers at the beginning of the game */
 	void fill_board(int num_to_fill);

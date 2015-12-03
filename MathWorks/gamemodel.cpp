@@ -10,9 +10,9 @@
 #include "gamemodel.h"
 
 // Seed the random number generator with the current time
-MathGameModel::MathGameModel()
+MathGameModel::MathGameModel(GameBoardModel *board_model)
 {
-    srand((unsigned)time(0));
+    MathGameModel::board_model = board_model;
 }
 
 int MathGameModel::findLengthofNum(std::string formula, unsigned int index)
@@ -239,6 +239,22 @@ int MathGameModel::CalculateNumber(int originalnum, int num, char oper)
 	originalnum = originalnum * num;
 	}
 return originalnum;
+}
+
+void MathGameModel::add_block(int row, int col)
+{
+    board_model->select_block(row, col);
+    append(std::to_string(board_model->get_block(row,col)));
+    selected_block_list.push(row*board_model->get_width()+col);
+}
+
+void MathGameModel::remove_block()
+{
+    int val = selected_block_list.top();
+    selected_block_list.pop();
+    int row = val/board_model->get_width();
+    int col = val%board_model->get_width();
+    board_model->deselect_block(row, col);
 }
 
 /* Try to clear tiles from the board used in the given formula.
@@ -556,11 +572,15 @@ bool MathGameModel::handle_formula(std::string formula) {
 return true;
 }
 
+void MathGameModel::clear_formula() {
+    while (!formula.empty()) formula.pop_back();
+}
+
 /* Fill empty spaces with random numbers at the given ratio */
 void MathGameModel::fill_board(int num_to_fill)
 {
     // ratio determines how many blocks are filled
-    int num_to_fill = ratio * board_model->num_empty_blocks();
+    //int num_to_fill = ratio * board_model->num_empty_blocks();
     int num_total_blocks = board_model->get_width() * board_model->get_height();
 
     while (num_to_fill > 0)
@@ -584,6 +604,17 @@ void MathGameModel::fill_board(int num_to_fill)
 
         board_model->set_block(row, col, value);
         num_to_fill -= 1;
+    }
+}
+
+void MathGameModel::clear_selected_blocks() {
+    while (!selected_block_list.empty()) {
+        int val = selected_block_list.top();
+        selected_block_list.pop();
+
+        int row = val/board_model->get_width();
+        int col = val % board_model->get_width();
+        board_model->clear_block(row, col);
     }
 }
 

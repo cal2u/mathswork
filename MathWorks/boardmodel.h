@@ -16,7 +16,7 @@ private:
 
 	int  *blocks;
 	bool *selected;
-
+    
 	int  num_blocks; // Number of squares that are not empty
 
 public:
@@ -38,9 +38,10 @@ public:
 
     bool    is_selected(int row, int col);
 
-	void	select_block(int row, int col); // Returns false if already selected
-	void 	deselect_block(int row, int col); // Return false if not selected
+    void	select_block(int row, int col);
+    void 	deselect_block(int row, int col);
 
+    // Deselects the block if selected, sets value to -1
 	void 	clear_block(int row, int col);
 };
  /* namespace std */
