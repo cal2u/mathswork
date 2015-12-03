@@ -13,7 +13,6 @@ GameOver::GameOver(QWidget *parent, QString userNam, int scre) : QDialog(parent)
     score = scre;
     ui->score->setText(QString::number(score));
     ui->userName->setText(userName);
-    std::cout << userName.toStdString() << '\n';
 
     // Auto save
     //saveGame(score, userName);
@@ -29,28 +28,6 @@ GameOver::GameOver(QWidget *parent, QString userNam, int scre) : QDialog(parent)
 
 GameOver::~GameOver(){
     delete ui;
-}
-
-// Set score
-void GameOver::setScore(int scre){
-    score = scre;
-    ui->score->setText(QString::number(score));
-}
-
-// Set username
-void GameOver::setUserName(QString usrName){
-     userName = usrName;
-     ui->userName->setText(userName);
-}
-
-// Get score
-int GameOver::getScore(){
-    return score;
-}
-
-// Get username
-QString GameOver::getUserName(){
-    return userName;
 }
 
 // To retry create new game and close gameover

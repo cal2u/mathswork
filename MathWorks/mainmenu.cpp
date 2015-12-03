@@ -29,7 +29,6 @@ MainMenu::~MainMenu(){
 // Go to play game section
 void MainMenu::on_playGame_clicked(){
     // Go to game selection
-    std::cout << userName.toStdString() << '\n';
     GameSix *gameSix = new GameSix(this, userName);
     this->hide();
     gameSix->exec();

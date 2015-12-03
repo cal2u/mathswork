@@ -365,7 +365,7 @@ color: rgb(28, 153, 37)
 }</string>
    </property>
    <property name="text">
-    <string>10</string>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>
@@ -1539,7 +1539,7 @@ color: rgb(28, 153, 37)
 }</string>
    </property>
    <property name="text">
-    <string>10</string>
+    <string>1</string>
    </property>
    <property name="iconSize">
     <size>

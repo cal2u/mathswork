@@ -15,7 +15,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     // Default score
     score = 0;
     userName = usrName;
-    std::cout << userName.toStdString() << '\n';
+    changeScore(score);
 
     // Timer
     /* TODO: Impliment timer that syncs with game*/
@@ -394,15 +394,6 @@ void GameSix::update_board_ui(){
     ui->p5_4->setText((game_board->get_block(5,4) != -1) ? QString::number(game_board->get_block(5,4)) : "");
     ui->p5_5->setText((game_board->get_block(5,5) != -1) ? QString::number(game_board->get_block(5,5)) : "");}
 
-void GameSix::setScore(int scre){
-    this->score = scre;
-    changeScore(score);
-}
-
-void GameSix::setUserName(QString usrName){
-    this->userName = usrName;
-}
-
 void GameSix::closeGame(){
     this->close();
 }
@@ -413,6 +404,7 @@ void GameSix::startGame(){
 
 // Change Score
 void GameSix::changeScore(int scre){
+    score = scre;
     ui->score->setText((QString) scre);
 }
 
@@ -425,4 +417,8 @@ void GameSix::gameEnd(){
 
 void GameSix::on_p0_0_clicked(){
     gameEnd();
+}
+
+void GameSix::on_pushButton_2_clicked(){
+    this->close();
 }

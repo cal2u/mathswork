@@ -15,10 +15,6 @@ public:
     explicit GameOver(QWidget *parent = 0, QString userNam = "Player 1", int scre = 0);
     ~GameOver();
     void saveGame();
-    void setScore(int scre);
-    void setUserName(QString usrName);
-    int getScore();
-    QString getUserName();
 
 signals:
     void on_quit_clicked();

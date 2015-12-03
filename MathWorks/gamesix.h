@@ -19,8 +19,6 @@ public:
     ~GameSix();
     void changeScore(int scre);
     void gameEnd();
-    void setScore(int scre);
-    void setUserName(QString usrName);
 
 private slots:
     void closeGame();
@@ -33,6 +31,8 @@ private slots:
     void on_multiply_clicked();
     void on_divide_clicked();
     void update_board_ui();
+
+    void on_pushButton_2_clicked();
 
 private:
     const static int width = 6;
