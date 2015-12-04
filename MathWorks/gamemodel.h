@@ -71,6 +71,8 @@ public:
 	/* Adds a num or operator to the formula */
 	void append(std::string numop);
 
+    // Deselects all the blocks
+    void deselect_all();
 
 	/* Fills in more grid squares based on game mode and difficulty */
 	void tick();

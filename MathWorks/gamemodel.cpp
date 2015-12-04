@@ -206,7 +206,7 @@ int number = 0;
 	}
 	//determine if number is used too many times
 	int used = 0;
-	for (int i = 0; i < MathGameModel::arrayofnumbers.size(); ++i)
+    for (size_t i = 0; i < MathGameModel::arrayofnumbers.size(); ++i)
 	{
 		if (number == MathGameModel::arrayofnumbers[i])
 		{
@@ -214,7 +214,7 @@ int number = 0;
 		}
 	}
 	int repeats = 0;
-	for (int u = 0; u < MathGameModel::board_model->get_gridsize();++u)
+    for (size_t u = 0; u < MathGameModel::board_model->get_gridsize();++u)
 	{
 		if (MathGameModel::board_model->get_blocks(u) == number)
 		{
@@ -855,6 +855,15 @@ void MathGameModel::dequeue()
 void MathGameModel::append(std::string numop)
 {
     formula.push_back(numop);
+}
+
+void MathGameModel::deselect_all(){
+    for (int i = 0; i < board_model->get_width(); i++) {
+        for (int j = 0; j < board_model->get_height(); j++) {
+            board_model->deselect_block(i,j);
+        }
+    }
+    while (!selected_block_list.empty()) selected_block_list.pop();
 }
 
 /* Returns a string representation of the formula */
