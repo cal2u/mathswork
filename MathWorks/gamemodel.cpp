@@ -244,7 +244,7 @@ void MathGameModel::printVector(std::vector<char> array, std::vector<int> array2
 	}
 }
 
-int MathGameModel::CalculateNumber(double originalnum, double num, char oper)
+double MathGameModel::CalculateNumber(double originalnum, double num, char oper)
 {
 	if (oper == '+')
 	{
@@ -749,11 +749,14 @@ PassValues MathGameModel::handle_formula(std::string formula) {
 			}
 			else
 			{
-			number = CalculateNumber(double(number), double(MathGameModel::arrayofnumbers[i]),MathGameModel::arrayofchars[i-1]);
+			double originalnum = number;
+			double addnum = MathGameModel::arrayofnumbers[i];
+			number = CalculateNumber(originalnum, addnum,MathGameModel::arrayofchars[i-1]);
 			}
 		}
 		//last number should be result, so the formula has to equal the result input by player
-		if (number >= double(MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1])-0.001 || number <= double(MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1])+0.001)
+		double comparenum = MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1];
+		if (number <= (comparenum-0.001) || number >= (comparenum+0.001))
 		{
 			PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
 			return *values;//couldnt find the number being used in the gameboard, so invalid

@@ -39,7 +39,7 @@ public:
 	int generateNumber(std::string formula, int index, int length);
 
 	/*Function that calculates each operation and number from given formula, to check if the result is found in the grid*/
-	int CalculateNumber(double originalnum, double num, char oper);
+	double CalculateNumber(double originalnum, double num, char oper);
 
 	/*Another debug function; can remove later after testing completed*/
 	void printVector(std::vector<char> array, std::vector<int> array2);
