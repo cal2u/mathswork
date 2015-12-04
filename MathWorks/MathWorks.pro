@@ -29,7 +29,7 @@ SOURCES += main.cpp \
     boardmodel.cpp \
     gamemodel.cpp \
     passvalues.cpp \
-    leaderboardmodel.cpp
+    scoreentry.cpp
 
 HEADERS  += \
     mainmenu.h \
@@ -42,7 +42,8 @@ HEADERS  += \
     boardmodel.h \
     gamemodel.h \
     passvalues.h \
-    leaderboardmodel.h
+    leaderboardmodel.h \
+    scoreentry.h
 
 FORMS    += \
     mainmenu.ui \
