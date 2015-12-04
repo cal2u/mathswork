@@ -64,7 +64,7 @@ public:
     std::string get_formula();
 
 	/* Fill the board with new numbers at the beginning of the game */
-	void fill_board(int num_to_fill);
+    bool fill_board(int num_to_fill);
 
 	/* Removes the last num or operator from the formula */
 	void dequeue();

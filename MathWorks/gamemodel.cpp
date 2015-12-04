@@ -778,8 +778,20 @@ void MathGameModel::clear_formula() {
 }
 
 /* Fill empty spaces with random numbers at the given ratio */
-void MathGameModel::fill_board(int num_to_fill)
+bool MathGameModel::fill_board(int num_to_fill)
 {
+    int num_empty = board_model->num_empty_blocks();
+    std::cout << num_empty << std::endl;
+    //this will be used to determine a game over state
+    if (0 == num_empty) {
+        return false;
+
+    }
+    else if (num_to_fill > num_empty) {
+        num_to_fill = num_empty;    //fill only the number of spaces still open
+    }
+
+
     // ratio determines how many blocks are filled
     //int num_to_fill = ratio * board_model->num_empty_blocks();
     int num_total_blocks = board_model->get_width() * board_model->get_height();
@@ -806,6 +818,7 @@ void MathGameModel::fill_board(int num_to_fill)
         board_model->set_block(row, col, value);
         num_to_fill -= 1;
     }
+    return true;
 }
 
 void MathGameModel::clear_selected_blocks() {

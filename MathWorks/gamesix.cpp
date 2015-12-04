@@ -2,6 +2,7 @@
 #include "ui_gamesix.h"
 #include "gameover.h"
 #include "ui_gameover.h"
+#include "mathgametimer.h"
 #include <QPushButton>
 #include <iostream>
 #include <QSignalMapper>
@@ -17,12 +18,14 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     userName = usrName;
     changeScore(score);
 
-    // Timer
-    /* TODO: Impliment timer that syncs with game*/
-
     // Create game models
     game_board = new GameBoardModel(width, height);
     game_model = new MathGameModel(game_board);
+
+    // Timer
+    MathGameTimer* timer = new MathGameTimer(1000, game_model, this);
+    timer->startGameTimer();
+    /* TODO: Impliment timer that syncs with game*/
 
     // Set up the UI
     disable_grid();

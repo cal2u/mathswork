@@ -36,7 +36,7 @@ int GameBoardModel::num_empty_blocks()
     int count = 0;
     for (size_t i = 0; i < width*height; i++)
     {
-        if (blocks[i] != -1)
+        if (blocks[i] == -1)
         {
             count++;
         }
