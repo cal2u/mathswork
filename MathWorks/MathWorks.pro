@@ -29,7 +29,9 @@ SOURCES += main.cpp \
     boardmodel.cpp \
     gamemodel.cpp \
     passvalues.cpp \
-    scoreentry.cpp
+    scoreentry.cpp \
+    mathgametimer.cpp \
+    leaderboardmodel.cpp
 
 HEADERS  += \
     mainmenu.h \
@@ -42,8 +44,9 @@ HEADERS  += \
     boardmodel.h \
     gamemodel.h \
     passvalues.h \
-    leaderboardmodel.h \
-    scoreentry.h
+    scoreentry.h \
+    mathgametimer.h \
+    leaderboardmodel.h
 
 FORMS    += \
     mainmenu.ui \
@@ -53,3 +56,4 @@ FORMS    += \
     leaderboard.ui \
     settings.ui \
     gameover.ui
+

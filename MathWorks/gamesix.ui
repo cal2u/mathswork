@@ -1718,7 +1718,7 @@ color: rgb(28, 153, 37)
     <string>RESET</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="background">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -1735,6 +1735,30 @@ color: rgb(28, 153, 37)
    <property name="styleSheet">
     <string notr="true">background-color:white;
 border: 1px solid grey;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="textFormat">
+    <enum>Qt::PlainText</enum>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>520</y>
+     <width>291</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>24</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
    <property name="text">
     <string/>
