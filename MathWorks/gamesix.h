@@ -56,6 +56,9 @@ private:
     void enable_operators();
 
 
+    void update_formula_display();
+
+
 };
 
 #endif // GAMESIX_H

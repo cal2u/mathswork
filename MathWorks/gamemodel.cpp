@@ -7,11 +7,13 @@
 #include <cstdlib>
 #include <ctime>
 #include <vector>
+#include <sstream>
 #include "gamemodel.h"
 
 // Seed the random number generator with the current time
 MathGameModel::MathGameModel(GameBoardModel *board_model)
 {
+	srand(time(0));
     MathGameModel::board_model = board_model;
 }
 
@@ -242,7 +244,7 @@ void MathGameModel::printVector(std::vector<char> array, std::vector<int> array2
 	}
 }
 
-int MathGameModel::CalculateNumber(int originalnum, int num, char oper)
+double MathGameModel::CalculateNumber(double originalnum, double num, char oper)
 {
 	if (oper == '+')
 	{
@@ -266,7 +268,10 @@ return originalnum;
 void MathGameModel::add_block(int row, int col)
 {
     board_model->select_block(row, col);
-    append(std::to_string(board_model->get_block(row,col)));
+   // append(std::to_string(board_model->get_block(row,col)));
+    std::ostringstream ss;
+    ss << board_model->get_block(row,col);
+    append(ss.str());
     selected_block_list.push(row*board_model->get_width()+col);
 }
 
@@ -283,6 +288,8 @@ void MathGameModel::remove_block()
    Return true if valid, else false */
 PassValues MathGameModel::handle_formula(std::string formula) {
 //Step 1: break down the string into a math expression
+	MathGameModel::arrayofnumbers.clear();
+	MathGameModel::arrayofchars.clear();
 	for (unsigned int i = 0; i < formula.length(); ++i)
 	{
 	char t = formula[i];
@@ -733,20 +740,23 @@ PassValues MathGameModel::handle_formula(std::string formula) {
 		}
 	}
 	//now time to check the result of the equation matches a number from the table, using left to right operations instead of order of operations.
-		int number;
+		double number;
 		for (unsigned int i = 0; i < MathGameModel::arrayofnumbers.size()-1; ++i)
 		{
 			if (i == 0)
 			{
-			number = MathGameModel::arrayofnumbers[i];
+			number = double(MathGameModel::arrayofnumbers[i]);
 			}
 			else
 			{
-			number = CalculateNumber(number, MathGameModel::arrayofnumbers[i],MathGameModel::arrayofchars[i-1]);
+			double originalnum = number;
+			double addnum = MathGameModel::arrayofnumbers[i];
+			number = CalculateNumber(originalnum, addnum,MathGameModel::arrayofchars[i-1]);
 			}
 		}
 		//last number should be result, so the formula has to equal the result input by player
-		if (number != MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1])
+		double comparenum = MathGameModel::arrayofnumbers[MathGameModel::arrayofnumbers.size()-1];
+		if (number <= (comparenum-0.001) || number >= (comparenum+0.001))
 		{
 			PassValues * values = new PassValues(MathGameModel::arrayofnumbers, MathGameModel::arrayofchars, false);
 			return *values;//couldnt find the number being used in the gameboard, so invalid
@@ -757,9 +767,12 @@ PassValues MathGameModel::handle_formula(std::string formula) {
 			bool found = false;
 			for (int u = 0; u < MathGameModel::board_model->get_gridsize(); ++u)
 			{
-				if (MathGameModel::board_model->get_blocks(u) == MathGameModel::arrayofnumbers[i])
+				if (MathGameModel::arrayofnumbers[i] == MathGameModel::board_model->get_blocks(u))
 				{
-					found = true;
+				found = true;
+				//int column = u%MathGameModel::board_model->get_width();
+				//int row = u/MathGameModel::board_model->get_width();
+				//MathGameModel::add_block(row, column);
 				}
 			}
 			if (found == false)
@@ -798,10 +811,10 @@ bool MathGameModel::fill_board(int num_to_fill)
 
     while (num_to_fill > 0)
     {
-        int rand_spot = rand() % num_total_blocks;    
+        int rand_spot = rand() % num_total_blocks;
         int row = rand_spot / board_model->get_width();
         int col = rand_spot % board_model->get_width();
-        
+
         // Keep picking random blocks until we find
         // an empty one
         while (board_model->get_block(row, col) != -1)

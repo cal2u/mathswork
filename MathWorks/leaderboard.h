@@ -7,8 +7,7 @@ namespace Ui {
 class LeaderBoard;
 }
 
-class LeaderBoard : public QDialog
-{
+class LeaderBoard : public QDialog{
     Q_OBJECT
 
 public:

@@ -7,7 +7,6 @@
 
 #include "boardmodel.h"
 #include "passvalues.h"
-
 #include <string>
 #include <vector>
 #include <stack>
@@ -40,7 +39,7 @@ public:
 	int generateNumber(std::string formula, int index, int length);
 
 	/*Function that calculates each operation and number from given formula, to check if the result is found in the grid*/
-	int CalculateNumber(int originalnum, int num, char oper);
+	double CalculateNumber(double originalnum, double num, char oper);
 
 	/*Another debug function; can remove later after testing completed*/
 	void printVector(std::vector<char> array, std::vector<int> array2);
@@ -70,7 +69,7 @@ public:
 	void dequeue();
 
 	/* Adds a num or operator to the formula */
-	void append(std::string);
+	void append(std::string numop);
 
 
 	/* Fills in more grid squares based on game mode and difficulty */
