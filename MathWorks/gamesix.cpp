@@ -4,6 +4,9 @@
 #include "ui_gameover.h"
 #include "mathgametimer.h"
 #include <QPushButton>
+#include <QGraphicsOpacityEffect>
+#include <QPropertyAnimation>>
+#include <QTimer>
 #include <iostream>
 #include <QSignalMapper>
 
@@ -363,13 +366,35 @@ void GameSix::grid_block_clicked(int val){
             // Give feedback that it didn't work
         }
         update_formula_display();
+        QTimer * timer = new QTimer(this);
+        timer->singleShot(700, this, [=]{this->hide_formula();});
 
+        //connect(a,SIGNAL(finished()),this,SLOT(hideThisWidget()));
         // Either way, reset the flag for a new formula, update UI
         game_model->clear_formula();
         game_model->deselect_all();
         need_final_block = false;
         update_board_ui();
     }
+}
+
+void GameSix::hide_formula() {
+    std::cout << "trying to hide formula" << std::endl;
+    QGraphicsOpacityEffect *eff = new QGraphicsOpacityEffect(this);
+    ui->label->setGraphicsEffect(eff);
+    QPropertyAnimation *a = new QPropertyAnimation(eff,"opacity");
+    a->setDuration(2500);
+    a->setStartValue(1);
+    a->setEndValue(0);
+    a->setEasingCurve(QEasingCurve::OutBack);
+    a->start(QPropertyAnimation::DeleteWhenStopped);
+    connect(a,&QPropertyAnimation::finished,this, [=](){
+        update_formula_display();
+        QGraphicsOpacityEffect *eff = new QGraphicsOpacityEffect(this);
+        ui->label->setGraphicsEffect(eff);
+        eff->setOpacity(1);
+       std::cout << "tring to show" << std::endl;
+    });
 }
 
 void GameSix::update_formula_display() {

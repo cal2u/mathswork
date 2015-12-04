@@ -57,6 +57,7 @@ private:
 
 
     void update_formula_display();
+    void hide_formula();
 
 
 };
