@@ -1,12 +1,12 @@
 #include "gamesix.h"
 #include "ui_gamesix.h"
 #include "gameover.h"
+#include "gamemodel.h"
 #include "ui_gameover.h"
 #include "mathgametimer.h"
 #include <QPushButton>
 #include <QGraphicsOpacityEffect>
-#include <QPropertyAnimation>>
-#include <QTimer>
+ #include <QTimer>
 #include <iostream>
 #include <QSignalMapper>
 
@@ -28,10 +28,25 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     timer->startGameTimer();
     /* TODO: Impliment timer that syncs with game*/
 
+
     // Set up the UI
     disable_grid();
     game_model->fill_board(20);
     update_board_ui();
+
+
+    // Timer for animation
+    animation_timer = new QTimer(this);
+    animation_timer->setSingleShot(true);
+    formula_opacity= new QGraphicsOpacityEffect(this);
+    ui->label->setGraphicsEffect(formula_opacity);
+
+    formula_animator = new QPropertyAnimation(formula_opacity,"opacity");
+    formula_animator->setDuration(ANIMATION_DURATION);
+    formula_animator->setStartValue(1);
+    formula_animator->setEndValue(0);
+    formula_animator->setEasingCurve(QEasingCurve::OutQuart);
+
 
     // Map the grid buttons
     QSignalMapper *signalMapper = new QSignalMapper(this);
@@ -155,6 +170,7 @@ GameSix::~GameSix(){
     delete game_board;
     delete game_model;
     delete gameOvr;
+    delete animation_timer;
 }
 
 void GameSix::enable_selectable_blocks() {
@@ -319,6 +335,7 @@ void GameSix::on_divide_clicked(){
 void GameSix::grid_block_clicked(int val){
     QPushButton *button = (QPushButton*)((QSignalMapper*)sender())->mapping(val);
 
+
     // Prints the coordinates of the block
     int row = val/width;
     int col = val % height;
@@ -340,10 +357,22 @@ void GameSix::grid_block_clicked(int val){
 
         // Make the number red
         button->setStyleSheet("QPushButton {color: rgb(200,0,0); font-size:32px;}");
+        ui->label->setStyleSheet("color: black;");
+
 
         // TODO: Update the formula view
         std::cout << "Formula: " << game_model->get_formula() << std::endl;
         update_formula_display();
+        std::cout << "Checking if timer is active." << std::endl;
+        if (animation_timer->isActive()) {
+            std::cout << "Yup, trying to stop it." << std::endl;
+            animation_timer->stop();
+        } else {
+            std::cout << "Stopping animator" << std::endl;
+            formula_animator->stop();
+            std::cout << "Stop successful" << std::endl;
+            formula_opacity->setOpacity(1);
+        }
 
         // Enable operation entry
         enable_operators();
@@ -359,18 +388,33 @@ void GameSix::grid_block_clicked(int val){
         if (result.get_pass()) {
             std::cout << "Clearing the board!" << std::endl;
             game_model->clear_selected_blocks();
+            ui->label->setStyleSheet("color: green");
+
         }
         else {
             std::cout << game_model->get_formula() << std::endl;
             std::cout << "INVALID" << std::endl;
             // Give feedback that it didn't work
-        }
-        update_formula_display();
-        QTimer * timer = new QTimer(this);
-        timer->singleShot(700, this, [=]{this->hide_formula();});
+            ui->label->setStyleSheet("color: red");
 
-        //connect(a,SIGNAL(finished()),this,SLOT(hideThisWidget()));
-        // Either way, reset the flag for a new formula, update UI
+        }
+
+        std::cout << "Checking if timer is active." << std::endl;
+        if (animation_timer->isActive()) {
+            std::cout << "Yup, trying to stop it." << std::endl;
+            animation_timer->stop();
+        }
+        else {
+            std::cout << "Stopping animator" << std::endl;
+            formula_animator->stop();
+            std::cout << "Stop successful" << std::endl;
+            formula_opacity->setOpacity(1);
+        }
+
+        update_formula_display();
+        connect(animation_timer, &QTimer::timeout, [=]{this->hide_formula();});
+        animation_timer->start(ANIMATION_DELAY);
+
         game_model->clear_formula();
         game_model->deselect_all();
         need_final_block = false;
@@ -380,21 +424,7 @@ void GameSix::grid_block_clicked(int val){
 
 void GameSix::hide_formula() {
     std::cout << "trying to hide formula" << std::endl;
-    QGraphicsOpacityEffect *eff = new QGraphicsOpacityEffect(this);
-    ui->label->setGraphicsEffect(eff);
-    QPropertyAnimation *a = new QPropertyAnimation(eff,"opacity");
-    a->setDuration(2500);
-    a->setStartValue(1);
-    a->setEndValue(0);
-    a->setEasingCurve(QEasingCurve::OutBack);
-    a->start(QPropertyAnimation::DeleteWhenStopped);
-    connect(a,&QPropertyAnimation::finished,this, [=](){
-        update_formula_display();
-        QGraphicsOpacityEffect *eff = new QGraphicsOpacityEffect(this);
-        ui->label->setGraphicsEffect(eff);
-        eff->setOpacity(1);
-       std::cout << "tring to show" << std::endl;
-    });
+    formula_animator->start(QPropertyAnimation::KeepWhenStopped);
 }
 
 void GameSix::update_formula_display() {

@@ -5,7 +5,9 @@
 #include "boardmodel.h"
 #include "gamemodel.h"
 #include <QDialog>
-
+#include <QTimer>
+#include <QPropertyAnimation>
+#include <QGraphicsOpacityEffect>
 namespace Ui {
 class GameSix;
 }
@@ -40,14 +42,19 @@ private slots:
 private:
     const static int width = 6;
     const static int height = 6;
+    const static int ANIMATION_DURATION = 700;
+    const static int ANIMATION_DELAY = 4000;
     bool need_final_block;
     int score;
     QString userName;
-    GameBoardModel *game_board;
-    MathGameModel *game_model;
-    GameOver *gameOvr;
+    QTimer* animation_timer = nullptr;
+    GameBoardModel *game_board = nullptr;
+    MathGameModel *game_model = nullptr;
+    QPropertyAnimation *formula_animator = nullptr;
+    QGraphicsOpacityEffect *formula_opacity = nullptr;
+    GameOver *gameOvr = nullptr;
 
-    Ui::GameSix *ui;
+    Ui::GameSix *ui = nullptr;
 
     void disable_grid();
     void enable_selectable_blocks();
