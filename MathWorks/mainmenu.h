@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+#include <QSound>
 #include "loginout.h"
 #include "ui_loginout.h"
 
@@ -31,6 +32,8 @@ private slots:
 
 private:
     QString userName;
+    QSound *music;
+    bool play_music = true;
 
 public:
     Ui::MainMenu *ui;

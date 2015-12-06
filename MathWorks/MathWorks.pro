@@ -56,3 +56,6 @@ FORMS    += \
     settings.ui \
     gameover.ui
 
+RESOURCES += \
+    resources.qrc
+

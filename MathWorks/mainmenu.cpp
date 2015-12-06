@@ -10,6 +10,7 @@
 #include "ui_leaderboard.h"
 #include "settings.h"
 #include "ui_settings.h"
+#include <QSound>
 
 // Constructor and destructor
 MainMenu::MainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainMenu){
@@ -19,19 +20,28 @@ MainMenu::MainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainMenu){
     logIn = new LogInOut();
     userName = "Player 1";
     //QObject::connect(logIn, SIGNAL(on_ok_clicked()), this, SLOT(setUserName(logIn->getName())));
+    music = new QSound(":/resources/sounds/menu.wav");
+    music->play();
+    music->setLoops(QSound::Infinite);
+
 
 }
 
 MainMenu::~MainMenu(){
     delete ui;
+    delete music;
 }
+
 
 // Go to play game section
 void MainMenu::on_playGame_clicked(){
     // Go to game selection
+    music->stop();
     GameSix *gameSix = new GameSix(this, userName);
+    gameSix->setAttribute(Qt::WA_DeleteOnClose, true);
     this->hide();
     gameSix->exec();
+    music->play();
     // Bring main menu back after
     this->show();
 }

@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/resources">
+        <file>sounds/mathworks.wav</file>
+        <file>sounds/menu.wav</file>
+    </qresource>
+</RCC>

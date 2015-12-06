@@ -19,6 +19,10 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     userName = usrName;
     changeScore(score);
 
+    music = new QSound(":/resources/sounds/mathworks.wav");
+    music->play();
+    music->setLoops(QSound::Infinite);
+
     // Create game models
     game_board = new GameBoardModel(width, height);
     game_model = new MathGameModel(game_board);
@@ -31,6 +35,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
 
     // Set up the UI
     disable_grid();
+    disable_operators();
     game_model->fill_board(20);
     update_board_ui();
 
@@ -172,6 +177,8 @@ GameSix::~GameSix(){
     delete game_model;
     delete gameOvr;
     delete animation_timer;
+    delete timer;
+    delete music;
 }
 
 void GameSix::enable_selectable_blocks() {

@@ -7,6 +7,7 @@
 #include "mathgametimer.h"
 #include <QDialog>
 #include <QTimer>
+#include <QSound>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
 
@@ -61,6 +62,7 @@ private:
     QGraphicsOpacityEffect *formula_opacity = nullptr;
     GameOver *gameOvr = nullptr;
     MathGameTimer* timer = nullptr;
+    QSound *music = nullptr;
 
     Ui::GameSix *ui = nullptr;
     
