@@ -4,7 +4,11 @@
 #include "ui_gameover.h"
 #include "boardmodel.h"
 #include "gamemodel.h"
+#include "mathgametimer.h"
 #include <QDialog>
+
+class MathGameTimer;//forward declaration
+
 
 namespace Ui {
 class GameSix;
@@ -18,6 +22,7 @@ public:
     explicit GameSix(QWidget *parent = 0, QString usrName = "Player 1");
     ~GameSix();
     void changeScore(int scre);
+    void changeTime(int time);
     void gameEnd();
 
 public slots:
@@ -27,7 +32,7 @@ private slots:
     void closeGame();
     void startGame();
     void grid_block_clicked(int val);
-    void on_p0_0_clicked();
+//    void on_p0_0_clicked();
     void on_equals_clicked();
     void on_add_clicked();
     void on_subtract_clicked();
@@ -46,6 +51,7 @@ private:
     GameBoardModel *game_board;
     MathGameModel *game_model;
     GameOver *gameOvr;
+    MathGameTimer* timer;
 
     Ui::GameSix *ui;
 
@@ -59,7 +65,7 @@ private:
     void update_formula_display();
     void hide_formula();
 
-
+    void reject() override;
 };
 
 #endif // GAMESIX_H

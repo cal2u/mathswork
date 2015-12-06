@@ -30,8 +30,7 @@ SOURCES += main.cpp \
     gamemodel.cpp \
     passvalues.cpp \
     scoreentry.cpp \
-    mathgametimer.cpp \
-    leaderboardmodel.cpp
+    mathgametimer.cpp
 
 HEADERS  += \
     mainmenu.h \
