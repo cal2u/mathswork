@@ -17,6 +17,21 @@ MathGameModel::MathGameModel(GameBoardModel *board_model)
     MathGameModel::board_model = board_model;
 }
 
+void MathGameModel::undo_last_move()
+{
+    if (formula.size() > 0)
+    {
+        std::string last = formula.back();
+        formula.pop_back();
+        if (last != "*" && last == "/" && last != "+" && last != "-" && last != "=")
+        {
+            int val = selected_block_list.top();
+            selected_block_list.pop();
+            board_model->deselect_block(val/board_model->get_width(), val % board_model->get_width());
+        }
+    }
+}
+
 int MathGameModel::findLengthofNum(std::string formula, unsigned int index)
 {
 	char t = formula[index];
@@ -214,7 +229,7 @@ int number = 0;
 		}
 	}
 	int repeats = 0;
-    for (size_t u = 0; u < MathGameModel::board_model->get_gridsize();++u)
+    for (int u = 0; u < MathGameModel::board_model->get_gridsize();++u)
 	{
 		if (MathGameModel::board_model->get_blocks(u) == number)
 		{

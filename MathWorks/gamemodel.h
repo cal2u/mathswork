@@ -71,6 +71,8 @@ public:
 	/* Adds a num or operator to the formula */
 	void append(std::string numop);
 
+    void undo_last_move();
+
     // Deselects all the blocks
     void deselect_all();
 

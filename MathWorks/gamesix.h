@@ -42,6 +42,8 @@ private slots:
     void on_subtract_clicked();
     void on_multiply_clicked();
     void on_divide_clicked();
+    void on_undo_clicked();
+    void on_clear_clicked();
 
 
     void on_pushButton_2_clicked();
@@ -53,6 +55,8 @@ private:
     const static int ANIMATION_DELAY = 4000;
     bool need_final_block;
     int score;
+
+    bool need_number = true;
     QString userName;
 
     QTimer* animation_timer = nullptr;

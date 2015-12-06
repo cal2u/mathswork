@@ -1638,7 +1638,7 @@ color: rgb(28, 153, 37)
     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="undo">
    <property name="geometry">
     <rect>
      <x>600</x>
@@ -1699,7 +1699,7 @@ color: rgb(28, 153, 37)
     <bool>false</bool>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="clear">
    <property name="geometry">
     <rect>
      <x>40</x>
@@ -1715,7 +1715,7 @@ color: rgb(28, 153, 37)
     </font>
    </property>
    <property name="text">
-    <string>RESET</string>
+    <string>CLEAR</string>
    </property>
   </widget>
   <widget class="QLabel" name="background">

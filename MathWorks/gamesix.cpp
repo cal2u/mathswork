@@ -18,7 +18,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     score = 0;
     userName = usrName;
     changeScore(score);
-
+    need_number = true;
     music = new QSound(":/resources/sounds/mathworks.wav");
     music->play();
     music->setLoops(QSound::Infinite);
@@ -276,8 +276,34 @@ void GameSix::disable_operators(){
     ui->equals->setEnabled(false);
 }
 
+void GameSix::on_undo_clicked(){
+    if (game_model->get_formula() != "")
+        need_number = !need_number;
+    game_model->undo_last_move();
+    update_board_ui();
+    update_formula_display();
+
+    if (need_number) {
+        disable_operators();
+    } else {
+        disable_grid();
+        enable_operators();
+    }
+}
+
+void GameSix::on_clear_clicked(){
+    need_number = true;
+    game_model->deselect_all();
+    game_model->clear_formula();
+    update_board_ui();
+    update_formula_display();
+    disable_operators();
+}
+
 void GameSix::on_equals_clicked(){
     need_final_block = true;
+    need_number = true;
+
     game_model->append("=");
 
     // Enable grid
@@ -289,6 +315,7 @@ void GameSix::on_equals_clicked(){
 
 void GameSix::on_add_clicked(){
     // Update model
+    need_number = true;
     game_model->append("+");
     update_formula_display();
 
@@ -301,6 +328,8 @@ void GameSix::on_add_clicked(){
 }
 
 void GameSix::on_subtract_clicked(){
+    need_number = true;
+
     // Update model
     game_model->append("-");
 
@@ -314,6 +343,8 @@ void GameSix::on_subtract_clicked(){
 }
 
 void GameSix::on_multiply_clicked(){
+    need_number = true;
+
     // Update model
     game_model->append("*");
 
@@ -327,6 +358,8 @@ void GameSix::on_multiply_clicked(){
 }
 
 void GameSix::on_divide_clicked(){
+    need_number = true;
+
     // Update model
     game_model->append("/");
 
@@ -342,7 +375,7 @@ void GameSix::on_divide_clicked(){
 
 void GameSix::grid_block_clicked(int val){
     QPushButton *button = (QPushButton*)((QSignalMapper*)sender())->mapping(val);
-
+    need_number = false;
 
     // Prints the coordinates of the block
     int row = val/width;
@@ -440,6 +473,7 @@ void GameSix::update_formula_display() {
 }
 
 void GameSix::update_board_ui(){
+    disable_grid();
     enable_selectable_blocks();
 
     ui->p0_0->setText((game_board->get_block(0,0) != -1) ? QString::number(game_board->get_block(0,0)) : "");
@@ -546,6 +580,7 @@ void GameSix::changeTime(int time) {
 
 // End game pop up, saves then ask to play again or exit
 void GameSix::gameEnd(){
+    music->stop();
     gameOvr = new GameOver(this, userName, score);
     gameOvr->setModal(true);
     gameOvr->exec();
