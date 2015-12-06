@@ -24,7 +24,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     game_model = new MathGameModel(game_board);
 
     // Timer
-    MathGameTimer* timer = new MathGameTimer(1000, game_model, this);
+    timer = new MathGameTimer(1000, game_model, this);
     timer->startGameTimer();
     /* TODO: Impliment timer that syncs with game*/
 
@@ -166,6 +166,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
 }
 
 GameSix::~GameSix(){
+    std::cout << "words (destructor)" << std::endl;
     delete ui;
     delete game_board;
     delete game_model;
@@ -517,6 +518,7 @@ void GameSix::update_board_ui(){
 }
 
 void GameSix::closeGame(){
+    timer->stop();
     this->close();
 }
 
@@ -530,17 +532,28 @@ void GameSix::changeScore(int scre){
     ui->score->setText((QString) scre);
 }
 
+// Change Time
+void GameSix::changeTime(int time) {
+    ui->timer->setText((QString) time);
+}
+
 // End game pop up, saves then ask to play again or exit
 void GameSix::gameEnd(){
     gameOvr = new GameOver(this, userName, score);
     gameOvr->setModal(true);
     gameOvr->exec();
+
 }
 
-void GameSix::on_p0_0_clicked(){
-    gameEnd();
-}
+//void GameSix::on_p0_0_clicked(){
+//    gameEnd();
+//}
 
 void GameSix::on_pushButton_2_clicked(){
-    this->close();
+    closeGame();
+}
+
+void GameSix::reject() {
+    closeGame();
+    QDialog::reject();
 }

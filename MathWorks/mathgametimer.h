@@ -4,7 +4,7 @@
 #include "gamemodel.h"
 #include "gamesix.h"
 
-
+class GameSix;//forward declaration
 
 class MathGameTimer : public QTimer
 {
@@ -18,12 +18,16 @@ public:
 private:
     int ticks;
     int msPerTick;
+    int cycles;
+    int ticksToChange;
     MathGameModel* game_model;
     void addNumbersToBoard(int numNums);
     GameSix* parentGame;
 
-    const int TICKS_PER_CYCLE = 10;
-    const int NUM_NUMS_TO_ADD = 5;
+    const int STARTING_CYCLE_TIME = 9; //if we want to make this more than 9
+                                       //we'll have to do a different way of converting
+                                       //a number to a string
+    const int NUM_NUMS_TO_ADD = 4;
 
 private slots:
     void tick();

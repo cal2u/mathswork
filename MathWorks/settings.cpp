@@ -1,10 +1,11 @@
 #include "settings.h"
 #include "ui_settings.h"
+//#include "leaderboardmodel.h"
 
 // Constructor and destructor
 Settings::Settings(QWidget *parent) : QDialog(parent), ui(new Ui::Settings){
     ui->setupUi(this);
-    ui->textBox->setText("MathsWork is a game developed by (insert team members here) for the COP 3503 team assignment.");
+    ui->textBox->setText("MathsWork is a game developed by Matthew, Caleb, Matt, Jean and Ian for the COP 3503 team assignment.");
 }
 
 Settings::~Settings(){
@@ -13,7 +14,7 @@ Settings::~Settings(){
 
 // Clear leaderboard
 void Settings::on_clearBut_clicked(){
-
+    //clearleadrboard();
 }
 
 // Close window

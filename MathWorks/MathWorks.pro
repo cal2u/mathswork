@@ -29,8 +29,8 @@ SOURCES += main.cpp \
     boardmodel.cpp \
     gamemodel.cpp \
     passvalues.cpp \
-    mathgametimer.cpp \
-    leaderboardmodel.cpp
+    scoreentry.cpp \
+    mathgametimer.cpp
 
 HEADERS  += \
     mainmenu.h \
@@ -43,6 +43,7 @@ HEADERS  += \
     boardmodel.h \
     gamemodel.h \
     passvalues.h \
+    scoreentry.h \
     mathgametimer.h \
     leaderboardmodel.h
 

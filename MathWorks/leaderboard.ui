@@ -61,7 +61,7 @@
     <string>1. </string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameOne">
+  <widget class="QLabel" name="topName1">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -74,7 +74,7 @@
     <string>Player 1</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreOne">
+  <widget class="QLabel" name="topScore1">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -87,7 +87,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameTwo">
+  <widget class="QLabel" name="topName2">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -100,7 +100,7 @@
     <string>Player 2</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreTwo">
+  <widget class="QLabel" name="topScore2">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -131,7 +131,7 @@
     <string>2.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameThree">
+  <widget class="QLabel" name="topName3">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -144,7 +144,7 @@
     <string>Player 3</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreThree">
+  <widget class="QLabel" name="topScore3">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -175,7 +175,7 @@
     <string>3.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameFive">
+  <widget class="QLabel" name="topName5">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -188,7 +188,7 @@
     <string>Player 5</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameFour">
+  <widget class="QLabel" name="topName4">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -219,7 +219,7 @@
     <string>6.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreSix">
+  <widget class="QLabel" name="topScore6">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -232,7 +232,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreFour">
+  <widget class="QLabel" name="topScore4">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -245,7 +245,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreFFive">
+  <widget class="QLabel" name="topScore5">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -258,7 +258,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameSix">
+  <widget class="QLabel" name="topName6">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -307,7 +307,7 @@
     <string>4.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameEight">
+  <widget class="QLabel" name="topName8">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -320,7 +320,7 @@
     <string>Player 8</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameSeven">
+  <widget class="QLabel" name="topName7">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -351,7 +351,7 @@
     <string>9.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreNine">
+  <widget class="QLabel" name="topScore9">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -364,7 +364,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreSeven">
+  <widget class="QLabel" name="topScore7">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -377,7 +377,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreEight">
+  <widget class="QLabel" name="topScore8">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -390,7 +390,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameNine">
+  <widget class="QLabel" name="topName9">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -439,7 +439,7 @@
     <string>7.</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topScoreTen">
+  <widget class="QLabel" name="topScore10">
    <property name="geometry">
     <rect>
      <x>270</x>
@@ -452,7 +452,7 @@
     <string>000</string>
    </property>
   </widget>
-  <widget class="QLabel" name="topNameTen">
+  <widget class="QLabel" name="topName10">
    <property name="geometry">
     <rect>
      <x>50</x>

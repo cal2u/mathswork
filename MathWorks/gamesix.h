@@ -4,10 +4,15 @@
 #include "ui_gameover.h"
 #include "boardmodel.h"
 #include "gamemodel.h"
+#include "mathgametimer.h"
 #include <QDialog>
 #include <QTimer>
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
+
+class MathGameTimer;//forward declaration
+
+
 namespace Ui {
 class GameSix;
 }
@@ -20,6 +25,7 @@ public:
     explicit GameSix(QWidget *parent = 0, QString usrName = "Player 1");
     ~GameSix();
     void changeScore(int scre);
+    void changeTime(int time);
     void gameEnd();
 
 public slots:
@@ -29,7 +35,7 @@ private slots:
     void closeGame();
     void startGame();
     void grid_block_clicked(int val);
-    void on_p0_0_clicked();
+//    void on_p0_0_clicked();
     void on_equals_clicked();
     void on_add_clicked();
     void on_subtract_clicked();
@@ -47,15 +53,17 @@ private:
     bool need_final_block;
     int score;
     QString userName;
+
     QTimer* animation_timer = nullptr;
     GameBoardModel *game_board = nullptr;
     MathGameModel *game_model = nullptr;
     QPropertyAnimation *formula_animator = nullptr;
     QGraphicsOpacityEffect *formula_opacity = nullptr;
     GameOver *gameOvr = nullptr;
+    MathGameTimer* timer = nullptr;
 
     Ui::GameSix *ui = nullptr;
-
+    
     void disable_grid();
     void enable_selectable_blocks();
 
@@ -66,7 +74,7 @@ private:
     void update_formula_display();
     void hide_formula();
 
-
+    void reject() override;
 };
 
 #endif // GAMESIX_H
