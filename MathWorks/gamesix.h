@@ -53,7 +53,7 @@ private:
     const static int height = 6;
     const static int ANIMATION_DURATION = 700;
     const static int ANIMATION_DELAY = 4000;
-    bool need_final_block;
+    bool need_final_block = false;
     int score;
 
     bool need_number = true;

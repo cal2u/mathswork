@@ -277,18 +277,28 @@ void GameSix::disable_operators(){
 }
 
 void GameSix::on_undo_clicked(){
-    if (game_model->get_formula() != "")
-        need_number = !need_number;
-    game_model->undo_last_move();
-    update_board_ui();
-    update_formula_display();
+    if (game_model->get_formula() != "") {
+        need_final_block = false;
 
-    if (need_number) {
-        disable_operators();
-    } else {
-        disable_grid();
-        enable_operators();
+        //std::cout << ((need_number) ? "Need number" : "Need operator") << std::endl;
+
+        if (game_model->get_formula() != "") {
+            need_number = !need_number;
+        }
+        game_model->undo_last_move();
+        update_board_ui();
+        update_formula_display();
+
+        if (need_number) {
+            disable_operators();
+        } else {
+            disable_grid();
+            enable_operators();
+        }
     }
+
+    //std::cout << ((need_number) ? "Need number" : "Need operator") << std::endl;
+
 }
 
 void GameSix::on_clear_clicked(){
@@ -305,7 +315,7 @@ void GameSix::on_equals_clicked(){
     need_number = true;
 
     game_model->append("=");
-
+    update_formula_display();
     // Enable grid
     enable_selectable_blocks();
 

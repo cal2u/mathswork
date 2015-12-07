@@ -22,11 +22,13 @@ void MathGameModel::undo_last_move()
     if (formula.size() > 0)
     {
         std::string last = formula.back();
+        std::cout << "last: " << last << std::endl;
         formula.pop_back();
-        if (last != "*" && last == "/" && last != "+" && last != "-" && last != "=")
+        if (last != "*" && last != "/" && last != "+" && last != "-" && last != "=")
         {
             int val = selected_block_list.top();
             selected_block_list.pop();
+            std::cout << val/board_model->get_width() << " " << val%board_model->get_width() << std::endl;
             board_model->deselect_block(val/board_model->get_width(), val % board_model->get_width());
         }
     }
@@ -885,10 +887,23 @@ void MathGameModel::deselect_all(){
 std::string MathGameModel::get_formula()
 {
     std::string formula_string = std::string();
-
     std::vector<std::string>::iterator iter = formula.begin();
+    std::vector<std::string> *formated_formula = new std::vector<std::string>();
+
+    /* Presedence of operators is
+        1. =
+        2. * and /
+        3. + and -
+    */
+
+    int prev_operator = 1;
     while (iter != formula.end())
     {
+/*        int current;
+        if (*iter == "+" || *iter == "-") current = 3;
+        if (*iter == )
+        if (*iter == "+" && prev > )
+      */
         formula_string += *iter;
         iter++;
     }
