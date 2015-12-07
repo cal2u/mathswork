@@ -1,10 +1,13 @@
 #include "leaderboard.h"
 #include "ui_leaderboard.h"
-#include "leaderboardmodel.h"
+//#include "leaderboardmodel.h"
 
 // Constructor and destrcutor
 LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBoard){
     ui->setupUi(this);
+
+    //lBoardMd = LeaderBoardModel();
+    //lBoardMd.isempty();
 
     // Debugging values
     //clearleadrboard();
@@ -21,8 +24,8 @@ LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBo
     addEntry(p4);*/
 
 // Checks to see if file exist in order to create temporary one
-    ifstream file;
-    file.open(leaderboard);
+/*    ifstream file;
+    file.open("leaderboard.txt");
 
     if (file.is_open())
     {
@@ -46,7 +49,7 @@ LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBo
         }
         file.close();
     }
-    else cout << "Unable to open file" << endl;
+    else cout << "Unable to open file" << endl;*/
 
 createBoard();
 }

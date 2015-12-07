@@ -1,6 +1,5 @@
 #include "mathgametimer.h"
 
-
 MathGameTimer::MathGameTimer(int msPerTick, MathGameModel* game_model, QObject * parent)
     : QTimer(parent), msPerTick(msPerTick), game_model(game_model)
 {
