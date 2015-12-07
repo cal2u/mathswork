@@ -60,39 +60,8 @@ public:
      *
      */
      void addEntry(ScoreEntry p);
+
+     void leader(std::vector<std::string> &vec);
 };
-
-
-    /*void leaders(std::vector<std::string> &vec){
-        ifstream file;
-        file.open(leaderboard);
-
-        if (file.is_open())
-        {
-            string temp;
-            int score;
-            string name;
-            for(int g=0;g<10;g++) {
-                file >>temp;
-                file >> score;
-                file >> name;
-                string res;
-                // Stream conversation
-                ostringstream convert;
-                // Instert
-                convert << score;
-                // Convert to string
-                res = convert.str();
-
-                vec.push_back(res);
-                vec.push_back(name);
-            }
-            file.close();
-        }
-        else cout << "Unable to open file" << endl;
-    };
-*/
-
-
 
 #endif // LEADERBOARDMODEL_H

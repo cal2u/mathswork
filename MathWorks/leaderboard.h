@@ -15,7 +15,7 @@ public:
     explicit LeaderBoard(QWidget *parent = 0);
     ~LeaderBoard();
     void createBoard();
-    LeaderBoardModel lBoardMd;
+    LeaderBoardModel *lBoardMd;
 
 private slots:
     void on_pushButton_clicked();
