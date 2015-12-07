@@ -12,6 +12,13 @@
 //Not sure if you want anything extra from the types of numbers used; all I did was get how many different numbers and how many unique numbers were used
 PassValues::PassValues(std::vector<int> arrayofnumbers, std::vector<char> arrayofchars, bool passed)
 {
+    numofaddition = 0;
+    numofdivision = 0;
+    numofmultiplication = 0;
+    numofsimilar = 0;
+    numofsubtraction = 0;
+    numofunique = 0;
+
 	this->passed = passed;
 	if (passed == true)
 	{

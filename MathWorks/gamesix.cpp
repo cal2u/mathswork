@@ -17,7 +17,7 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     // Default score
     score = 0;
     userName = usrName;
-    changeScore(score);
+    changeScore((float)score);
     need_number = true;
     music = new QSound(":/resources/sounds/mathworks.wav");
     music->play();
@@ -30,8 +30,6 @@ GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui:
     // Timer
     timer = new MathGameTimer(1000, game_model, this);
     timer->startGameTimer();
-    /* TODO: Impliment timer that syncs with game*/
-
 
     // Set up the UI
     disable_grid();
@@ -443,6 +441,7 @@ void GameSix::grid_block_clicked(int val){
             std::cout << "Clearing the board!" << std::endl;
             game_model->clear_selected_blocks();
             ui->label->setStyleSheet("color: green");
+            awardPoints(result);
 
         }
         else {
@@ -583,9 +582,11 @@ void GameSix::startGame(){
 }
 
 // Change Score
-void GameSix::changeScore(int scre){
-    score = scre;
-    ui->score->setText((QString) scre);
+void GameSix::changeScore(float scre){
+    score += scre;
+//    ui->score->setText((QString) scre);
+    ui->score->setText(QString::fromStdString(std::to_string((int)score)));
+    std::cout << score << std::endl;
 }
 
 // Change Time
@@ -608,6 +609,26 @@ void GameSix::gameEnd(){
 
 void GameSix::on_pushButton_2_clicked(){
     closeGame();
+}
+
+//award a number of points based on the complexity of the formula
+void GameSix::awardPoints(PassValues result){
+//    int numberScore = result.get_unique() + (result.get_similar()/2+1);
+    int addScore = result.get_add();
+    int subScore = result.get_sub();
+    int multScore = 2*result.get_mult();
+    int divScore = 3*result.get_divi();
+    int chainLength = result.get_add()+result.get_sub()+result.get_mult()+result.get_divi();
+    float lengthFactor = 1+(float)(chainLength)/10.0;
+
+    int rawScore = addScore+subScore+multScore+divScore;
+
+    float adjustedScore = (float)rawScore*lengthFactor;
+
+    changeScore(adjustedScore);
+//    std::cout << result.get_unique() << ", " << result.get_similar() << ", " << std::endl;
+//    std::cout << numberScore << ", " << addScore << ", " << subScore << ", " << multScore << ", " << divScore << ", " << chainLength << ", " << lengthFactor << ", " << std::endl;
+
 }
 
 void GameSix::reject() {

@@ -18,7 +18,7 @@ MainMenu::MainMenu(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainMenu){
     statusBar()->setSizeGripEnabled(false);
 
     logIn = new LogInOut();
-    userName = "Player 1";
+    userName = "Player1";
     //QObject::connect(logIn, SIGNAL(on_ok_clicked()), this, SLOT(setUserName(logIn->getName())));
     music = new QSound(":/resources/sounds/menu.wav");
     music->play();
@@ -74,7 +74,8 @@ void MainMenu::on_logInOut_clicked(){
     // Take name input into main menu
     QString nam = logIn->ui->usernameIn->text();
     ui->name->setText(nam);
-    userName = nam;
+    QString name = nam.split(" ").at(0);
+    userName = name;
 }
 
 

@@ -2,6 +2,7 @@
 #define LEADERBOARD_H
 #include <vector>
 #include <QDialog>
+#include "leaderboardmodel.h"
 
 namespace Ui {
 class LeaderBoard;
@@ -14,6 +15,7 @@ public:
     explicit LeaderBoard(QWidget *parent = 0);
     ~LeaderBoard();
     void createBoard();
+    LeaderBoardModel *lBoardMd;
 
 private slots:
     void on_pushButton_clicked();

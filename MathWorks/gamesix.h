@@ -25,9 +25,9 @@ class GameSix : public QDialog {
     Q_OBJECT
 
 public:
-    explicit GameSix(QWidget *parent = 0, QString usrName = "Player 1");
+    explicit GameSix(QWidget *parent = 0, QString usrName = "Player1");
     ~GameSix();
-    void changeScore(int scre);
+    void changeScore(float scre);
     void changeTime(int time);
     void gameEnd();
 
@@ -61,12 +61,14 @@ private:
     const static int ANIMATION_DELAY = 4000;
 
     bool need_final_block = false;
-    int score;
+    float score;
 
     bool need_number = true;
     QString userName;
 
     // Properties for animating the fading of the formula
+    void awardPoints(PassValues result);
+
     QTimer* animation_timer = nullptr;
     GameBoardModel *game_board = nullptr;
     MathGameModel *game_model = nullptr;

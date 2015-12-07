@@ -2,6 +2,7 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include "leaderboardmodel.h"
 
 namespace Ui {
 class Settings;
@@ -17,11 +18,12 @@ public:
 
 private slots:
     void on_clearBut_clicked();
-
     void on_pushButton_clicked();
 
 private:
     Ui::Settings *ui;
+    LeaderBoardModel *lBoardMd;
+
 };
 
 #endif // SETTINGS_H

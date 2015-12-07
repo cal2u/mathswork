@@ -6,6 +6,9 @@
 LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBoard){
     ui->setupUi(this);
 
+    lBoardMd = new LeaderBoardModel();
+    lBoardMd->leader(scores);
+
     // Debugging values
     //clearleadrboard();
     /*ScoreEntry p("Matthew", 100);
@@ -13,16 +16,19 @@ LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBo
     ScoreEntry p3("Ian", 100);
     ScoreEntry p4("Matt", 100);
     ScoreEntry p5("Jean", 100);
-    isempty();
-    addEntry(p);
-    addEntry(p2);
-    addEntry(p3);
-    addEntry(p2);
-    addEntry(p4);*/
+    ScoreEntry p6("Dan", 10);
+    ScoreEntry p7("Sand", 1010);
+    lBoardMd->addEntry(p);
+    lBoardMd->addEntry(p2);
+    lBoardMd->addEntry(p3);
+    lBoardMd->addEntry(p2);
+    lBoardMd->addEntry(p4);
+    lBoardMd->addEntry(p6);
+    lBoardMd->addEntry(p7);*/
 
 // Checks to see if file exist in order to create temporary one
-    ifstream file;
-    file.open(leaderboard);
+ /*   ifstream file;
+    file.open("leaderboard.txt");
 
     if (file.is_open())
     {
@@ -47,7 +53,7 @@ LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBo
         file.close();
     }
     else cout << "Unable to open file" << endl;
-
+*/
 createBoard();
 }
 
