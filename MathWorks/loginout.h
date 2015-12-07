@@ -3,6 +3,8 @@
 
 #include <QDialog>
 
+// Dialog for changing the user to be associated with scores
+
 namespace Ui {
 class LogInOut;
 }

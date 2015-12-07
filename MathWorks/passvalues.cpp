@@ -7,6 +7,7 @@
 
 #include "passvalues.h"
 
+// Class used to get scoring information from the MathGameModel class to the MathGameTimer
 
 //Not sure if you want anything extra from the types of numbers used; all I did was get how many different numbers and how many unique numbers were used
 PassValues::PassValues(std::vector<int> arrayofnumbers, std::vector<char> arrayofchars, bool passed)
@@ -15,9 +16,9 @@ PassValues::PassValues(std::vector<int> arrayofnumbers, std::vector<char> arrayo
 	if (passed == true)
 	{
 		std::vector<int> unique;
-		for (int i = 0; i < arrayofnumbers.size(); ++i)
+        for (size_t i = 0; i < arrayofnumbers.size(); ++i)
 		{
-			for (int u = 0; u < unique.size(); ++u)
+            for (size_t u = 0; u < unique.size(); ++u)
 			{
 				if (arrayofnumbers[i] == unique[u])
 				{
@@ -31,7 +32,7 @@ PassValues::PassValues(std::vector<int> arrayofnumbers, std::vector<char> arrayo
 			}
 		}
 
-		for (int i = 0; i < arrayofchars.size(); ++i)
+        for (size_t i = 0; i < arrayofchars.size(); ++i)
 		{
 			if (arrayofchars[i] == '+')
 			{

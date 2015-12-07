@@ -11,6 +11,8 @@
 #include <QPropertyAnimation>
 #include <QGraphicsOpacityEffect>
 
+// Main UI class for displaying the game
+
 class MathGameTimer;//forward declaration
 
 
@@ -51,25 +53,40 @@ private slots:
 private:
     const static int width = 6;
     const static int height = 6;
+
+    // How long the formula fades
     const static int ANIMATION_DURATION = 700;
+
+    // How long the formula remains on screen after submission
     const static int ANIMATION_DELAY = 4000;
+
     bool need_final_block = false;
     int score;
 
     bool need_number = true;
     QString userName;
 
+    // Properties for animating the fading of the formula
     QTimer* animation_timer = nullptr;
     GameBoardModel *game_board = nullptr;
     MathGameModel *game_model = nullptr;
     QPropertyAnimation *formula_animator = nullptr;
     QGraphicsOpacityEffect *formula_opacity = nullptr;
+
+    // The Game Over dialog
     GameOver *gameOvr = nullptr;
+
+    // The game timer
     MathGameTimer* timer = nullptr;
+
+    // Background music
     QSound *music = nullptr;
 
+    // UI
     Ui::GameSix *ui = nullptr;
     
+
+    // methods for making different buttions clickable
     void disable_grid();
     void enable_selectable_blocks();
 

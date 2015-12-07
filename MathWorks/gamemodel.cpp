@@ -17,6 +17,8 @@ MathGameModel::MathGameModel(GameBoardModel *board_model)
     MathGameModel::board_model = board_model;
 }
 
+// Removes the last operation or number from the current formula,
+// Deselcting the block
 void MathGameModel::undo_last_move()
 {
     if (formula.size() > 0)
@@ -34,6 +36,7 @@ void MathGameModel::undo_last_move()
     }
 }
 
+// Helper method to return the length of the number in the formula at the given index
 int MathGameModel::findLengthofNum(std::string formula, unsigned int index)
 {
 	char t = formula[index];
@@ -130,6 +133,7 @@ int MathGameModel::findLengthofNum(std::string formula, unsigned int index)
 	return 0;
 }
 
+// Returns the number of operators in the string, starting from the given index
 int MathGameModel::findLengthofOper(std::string formula, unsigned int index)
 {
 	char t = formula[index];
@@ -163,6 +167,7 @@ int MathGameModel::findLengthofOper(std::string formula, unsigned int index)
 		return 0;
 }
 
+// Returns the integer in the formula at the given index
 int MathGameModel::generateNumber(std::string formula, int index, int length)
 {
 int temp = length;
@@ -249,6 +254,7 @@ int number = 0;
 	}
 }
 
+// Helper method for printing out two vectors
 void MathGameModel::printVector(std::vector<char> array, std::vector<int> array2)
 {
 	for (unsigned int i = 0; i < array.size(); ++i)
@@ -261,6 +267,7 @@ void MathGameModel::printVector(std::vector<char> array, std::vector<int> array2
 	}
 }
 
+// calculates the reult of an operation on two numbers
 double MathGameModel::CalculateNumber(double originalnum, double num, char oper)
 {
 	if (oper == '+')
@@ -282,6 +289,7 @@ double MathGameModel::CalculateNumber(double originalnum, double num, char oper)
 return originalnum;
 }
 
+// Adds the value of given block to the end of the formula
 void MathGameModel::add_block(int row, int col)
 {
     board_model->select_block(row, col);
@@ -292,6 +300,7 @@ void MathGameModel::add_block(int row, int col)
     selected_block_list.push(row*board_model->get_width()+col);
 }
 
+// Removes the last block from the end of the formulaa
 void MathGameModel::remove_block()
 {
     int val = selected_block_list.top();
@@ -874,6 +883,7 @@ void MathGameModel::append(std::string numop)
     formula.push_back(numop);
 }
 
+/* Marks all the blocks as not belonging to the formula*/
 void MathGameModel::deselect_all(){
     for (int i = 0; i < board_model->get_width(); i++) {
         for (int j = 0; j < board_model->get_height(); j++) {
@@ -888,7 +898,7 @@ std::string MathGameModel::get_formula()
 {
     std::string formula_string = std::string();
     std::vector<std::string>::iterator iter = formula.begin();
-    std::vector<std::string> *formated_formula = new std::vector<std::string>();
+    //std::vector<std::string> *formated_formula = new std::vector<std::string>();
 
     /* Presedence of operators is
         1. =
@@ -896,7 +906,7 @@ std::string MathGameModel::get_formula()
         3. + and -
     */
 
-    int prev_operator = 1;
+    //int prev_operator = 1;
     while (iter != formula.end())
     {
 /*        int current;

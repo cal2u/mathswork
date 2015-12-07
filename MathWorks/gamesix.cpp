@@ -10,7 +10,7 @@
 #include <iostream>
 #include <QSignalMapper>
 
-// Constructor and destructor
+// Constructor and destructor for main game interface
 GameSix::GameSix(QWidget *parent, QString usrName) : QDialog(parent), ui(new Ui::GameSix){
     ui->setupUi(this);
 
@@ -276,6 +276,7 @@ void GameSix::disable_operators(){
     ui->equals->setEnabled(false);
 }
 
+// Remove the last operator or number from the formula
 void GameSix::on_undo_clicked(){
     if (game_model->get_formula() != "") {
         need_final_block = false;
@@ -301,6 +302,7 @@ void GameSix::on_undo_clicked(){
 
 }
 
+// Clear all the blocks and operations
 void GameSix::on_clear_clicked(){
     need_number = true;
     game_model->deselect_all();
@@ -383,6 +385,7 @@ void GameSix::on_divide_clicked(){
     disable_operators();
 }
 
+// Event handler for when a block is clicked
 void GameSix::grid_block_clicked(int val){
     QPushButton *button = (QPushButton*)((QSignalMapper*)sender())->mapping(val);
     need_number = false;

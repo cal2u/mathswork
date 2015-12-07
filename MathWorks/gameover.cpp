@@ -4,7 +4,7 @@
 #include "ui_gamesix.h"
 #include <string>
 
-// Constructor and destructor
+// Constructor and destructor for QDialog that is presented at game end
 GameOver::GameOver(QWidget *parent, QString userNam, int scre) : QDialog(parent), ui(new Ui::GameOver){
     ui->setupUi(this);
 
