@@ -469,6 +469,7 @@ void GameSix::grid_block_clicked(int val){
         game_model->clear_formula();
         game_model->deselect_all();
         need_final_block = false;
+        need_number = true;
         update_board_ui();
     }
 }

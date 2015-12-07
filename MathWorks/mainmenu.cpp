@@ -41,7 +41,6 @@ void MainMenu::on_playGame_clicked(){
     gameSix->setAttribute(Qt::WA_DeleteOnClose, true);
     this->hide();
     gameSix->exec();
-    gameSix->setFocus();
     music->play();
     // Bring main menu back after
     this->show();
@@ -51,7 +50,6 @@ void MainMenu::on_playGame_clicked(){
 void MainMenu::on_tutorial_clicked(){
     // Display tutorial dialogue
     Tutorial tutor;
-    tutor.setModal(true);
     tutor.exec();
 }
 
@@ -59,7 +57,6 @@ void MainMenu::on_tutorial_clicked(){
 void MainMenu::on_leaderBoard_clicked(){
     // Display Leaderboard
     LeaderBoard board;
-    board.setModal(true);
     board.exec();
 }
 
@@ -67,14 +64,12 @@ void MainMenu::on_leaderBoard_clicked(){
 void MainMenu::on_settings_clicked(){
     // Go to settings selection
     Settings set;
-    set.setModal(true);
     set.exec();
 }
 
 // Show log in dialog
 void MainMenu::on_logInOut_clicked(){
     // Display log in
-    logIn->setModal(true);
     logIn->exec();
     // Take name input into main menu
     QString nam = logIn->ui->usernameIn->text();
