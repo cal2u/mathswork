@@ -6,19 +6,21 @@
 LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBoard){
     ui->setupUi(this);
 
+    // Debugging values
     //clearleadrboard();
-    ScoreEntry p("fae", 2);
-    ScoreEntry p2("nah", 1);
-    //isempty();
+    /*ScoreEntry p("Matthew", 100);
+    ScoreEntry p2("Caleb", 100);
+    ScoreEntry p3("Ian", 100);
+    ScoreEntry p4("Matt", 100);
+    ScoreEntry p5("Jean", 100);
+    isempty();
     addEntry(p);
     addEntry(p2);
-    printleader();
+    addEntry(p3);
+    addEntry(p2);
+    addEntry(p4);*/
 
-    //printleader();
-
-    //scores;
-    //leaders(scores);
-
+// Checks to see if file exist in order to create temporary one
     ifstream file;
     file.open(leaderboard);
 
@@ -46,8 +48,6 @@ LeaderBoard::LeaderBoard(QWidget *parent) : QDialog(parent), ui(new Ui::LeaderBo
     }
     else cout << "Unable to open file" << endl;
 
-
-
 createBoard();
 }
 
@@ -59,35 +59,35 @@ void LeaderBoard::on_pushButton_clicked() {
     this->close();
 }
 
+// Goes through and gets the vector of scores and players to display as labels
 void LeaderBoard::createBoard(){
    QString qEntries [20];
     for (int i = 0; i < 20; i++){
-
+        // Must convert to QString
         std::string str = scores[i];
-        //std::cout<< str << '\n';
         QString qstr = QString::fromStdString(str);
         qEntries[i] = qstr;
     }
-
-    ui->topName1->setText(qEntries[0]);
-    ui->topScore1->setText(qEntries[1]);
-    ui->topName2->setText(qEntries[2]);
-    ui->topScore2->setText(qEntries[3]);
-    ui->topName3->setText(qEntries[4]);
-    ui->topScore3->setText(qEntries[5]);
-    ui->topName4->setText(qEntries[6]);
-    ui->topScore4->setText(qEntries[7]);
-    ui->topName5->setText(qEntries[8]);
-    ui->topScore5->setText(qEntries[9]);
-    ui->topName6->setText(qEntries[10]);
-    ui->topScore6->setText(qEntries[11]);
-    ui->topName7->setText(qEntries[12]);
-    ui->topScore7->setText(qEntries[13]);
-    ui->topName8->setText(qEntries[14]);
-    ui->topScore8->setText(qEntries[15]);
-    ui->topName9->setText(qEntries[16]);
-    ui->topScore9->setText(qEntries[17]);
-    ui->topName10->setText(qEntries[18]);
-    ui->topScore10->setText(qEntries[19]);
+    // All the labels
+    ui->topScore1->setText(qEntries[0]);
+    ui->topName1->setText(qEntries[1]);
+    ui->topScore2->setText(qEntries[2]);
+    ui->topName2->setText(qEntries[3]);
+    ui->topScore3->setText(qEntries[4]);
+    ui->topName3->setText(qEntries[5]);
+    ui->topScore4->setText(qEntries[6]);
+    ui->topName4->setText(qEntries[7]);
+    ui->topScore5->setText(qEntries[8]);
+    ui->topName5->setText(qEntries[9]);
+    ui->topScore6->setText(qEntries[10]);
+    ui->topName6->setText(qEntries[11]);
+    ui->topScore7->setText(qEntries[12]);
+    ui->topName7->setText(qEntries[13]);
+    ui->topScore8->setText(qEntries[14]);
+    ui->topName8->setText(qEntries[15]);
+    ui->topScore9->setText(qEntries[16]);
+    ui->topName9->setText(qEntries[17]);
+    ui->topScore10->setText(qEntries[18]);
+    ui->topName10->setText(qEntries[19]);
 
 }
