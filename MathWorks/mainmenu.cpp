@@ -41,6 +41,7 @@ void MainMenu::on_playGame_clicked(){
     gameSix->setAttribute(Qt::WA_DeleteOnClose, true);
     this->hide();
     gameSix->exec();
+    gameSix->setFocus();
     music->play();
     // Bring main menu back after
     this->show();
