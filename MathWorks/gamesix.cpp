@@ -484,7 +484,8 @@ void GameSix::update_formula_display() {
 
 void GameSix::update_board_ui(){
     disable_grid();
-    enable_selectable_blocks();
+    if (need_number)
+        enable_selectable_blocks();
 
     ui->p0_0->setText((game_board->get_block(0,0) != -1) ? QString::number(game_board->get_block(0,0)) : "");
     ui->p0_1->setText((game_board->get_block(0,1) != -1) ? QString::number(game_board->get_block(0,1)) : "");
